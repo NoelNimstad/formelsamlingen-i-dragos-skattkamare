@@ -1,0 +1,136 @@
+\section{Linjär algebra}
+
+\subsection{Linjer}
+
+\subsubsection{Vektorform}\label{s:linalg:linje:vektor-form}
+En linje i planet $\mathbb{R}^2$ eller rummet $\mathbb{R}^3$ i vektorform är en linje $L$ skriven i formen:
+$$
+	L:P+\vec{v}t,\quad t\in\mathbb{R}
+$$
+Där $P$ är en punkt i planet/rummet, och $\vec{v}$ riktningsvektorn av linjen.
+
+\begin{ber}
+\textbf{Beräkning från två angivna punkter $P$ och $Q$}
+
+Vi vet nu triviellt en punkt på linjen ($P$ eller $Q$).
+Riktningsvektorn är sedan lätt beräknad genom att finna vektorn mellan punkterna:
+$$
+	\vec{v}=\overrightarrow{PQ}\quad(\text{eller }\overrightarrow{QP})
+$$
+Ekvationen för linjen blir sedan:
+$$
+	L:P+\vec{v}t,\quad t\in\mathbb{R}
+$$
+\end{ber}
+
+\begin{omv}
+\textbf{Omvandling till affin form (\ref{s:linalg:linje:affin-form})}
+
+Given linjen i planet $\mathbb{R}^2$ (processen för rummet är analogt):
+$$
+	L:(A,B)+t(C,D),\quad t\in\mathbb{R}
+$$
+\end{omv}
+
+\subsubsection{Affin form}\label{s:linalg:linje:affin-form}
+En linje i planet $\mathbb{R}^2$ i affin form är en linje $L$ skriven i formen:
+$$
+	L=\qty{(x;y)\in\mathbb{R}^2:ax+by=c}
+$$
+där $a,b,c\in\mathbb{R}$ är konstanter.
+
+
+\begin{der}
+	\textbf{Derivering av den affina formen av linjer}
+
+	Se \textbf{Derivering av den affina formen av plan} i \ref{s:linalg:plan:affin-form},
+	processen är analog för linjer i planet.
+\end{der}
+
+\begin{omv}
+\textbf{Omvandling till vektorform (\ref{s:linalg:linje:vektor-form})}
+
+Given en linje av form $L:ax+by=c$, låt en av variablerna vara $t$.
+Till exempel: $x\leteq t^*$. Lös sedan för den andra variabeln:
+\begin{align*}
+	at+by=c\implies by&=c-at^*\\
+	\therefore y&=\frac{c-at^*}{b}=\frac{c}{b}-\frac{a}{b}t^*
+\end{align*}
+Alternativt, genom att sedan definera $t=bt^*$ får vi ut en lite enklare formel:
+$$
+	y=\frac{c}{b}-at
+$$
+Vektorformsekvationen blir sedan:
+$$
+	L:\qty(0,\frac{c}{b})+t(b,-a),\quad t\in\mathbb{R}
+$$
+För ett finare uttryck än $\qty(0,\frac{c}{b})$, om du vet någon punkt $\qty(\alpha,\beta)$
+ligger på linjen, så kan den användas istället.
+\end{omv}
+
+\subsection{Plan}
+
+\subsubsection{Affin form}\label{s:linalg:plan:affin-form}
+
+Ett plan i affin form är ett plan $\Pi$ skriven i formen:
+$$
+	\Pi:ax+by+cz=d
+$$
+där $a,b,c,d\in\mathbb{R}$ är konstanter.
+
+\begin{der}
+\textbf{Derivering av den affina formen av plan}
+
+Låt $O$ vara en punkt på planet.
+Vektorn mellan $O$ varje annan punkt på planet, $P$, måste vara vinkelrät mot normalvektorn,
+eftersom normalvektorn är vinkelrät mot planet, och $\overrightarrow{OP}$ är en vektor i planet.
+
+Därför kan vi skriva:
+\begin{align*}
+	\vec{n}\cdot\overrightarrow{OP}&=0\\
+	\implies \vec{n}\cdot(P-O)&=0\\
+	\therefore \vec{n}\cdot P&=\vec{n}\cdot O
+\end{align*}
+
+Eftersom vi redan, per definition av frågan, känner till värdet av $\vec{n}\leteq(a,b,c)$
+och $O$, så blir $\vec{n}\cdot O$ någon konstant, som vi betäcknar $d$.
+Låt slutligen våran punkt på planet $P\leteq(x,y,z)$:
+\begin{align*}
+	(a,b,c)\cdot(x,y,z)&=d\\
+	\therefore ax+by+cz+d&=d
+\end{align*}
+\end{der}
+
+\begin{ber}
+	Given en punkt på planet, och en normal vektor, se \textbf{Derivering av den affina formen av plan}.
+\end{ber}
+
+\subsection{Avstånd}
+
+\subsection{Vektor operationer}
+
+\subsubsection{\href{https://sv.wikipedia.org/wiki/Skalärprodukt}{Skalärprodukten}}
+
+\begin{features}
+	\textbf{Egenskaper av skalärprodukten}
+
+	Skalärprodukten är bilinjär, detta innebär:
+	\begin{itemize}
+		\item \textbf{Skalbar:} $a\vec{u}\cdot\vec{v}=\vec{u}\cdot a\vec{v}=a(\vec{u}\cdot\vec{v})$
+		\item \textbf{Distributivitet:} $\vec{u}\cdot(\vec{v}+\vec{w})=\vec{u}\cdot\vec{v}+\vec{u}\cdot\vec{w}$
+		\item \textbf{Kommutativitet:} $\vec{u}\cdot\vec{v}=\vec{v}\cdot\vec{u}$
+	\end{itemize}
+\end{features}
+
+\subsubsection{\href{https://sv.wikipedia.org/wiki/Kryssprodukt}{Kryssprodukten}}
+
+\begin{features}
+	\textbf{Egenskaper av Kryssprodukten}
+
+	Skalärprodukten är bilinjär, detta innebär:
+	\begin{itemize}
+		\item \textbf{Skalbar:} $a\vec{u}\cross\vec{v}=\vec{u}\cross a\vec{v}=a(\vec{u}\cross\vec{v})$
+		\item \textbf{Distributivitet:} $\vec{u}\cross(\vec{v}+\vec{w})=\vec{u}\cross\vec{v}+\vec{u}\cross\vec{w}$
+		\item \textbf{Anti-kommutativitet:} $\vec{u}\cross\vec{v}=-\vec{v}\cross\vec{u}$
+	\end{itemize}
+\end{features}

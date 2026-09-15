@@ -1,0 +1,36 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[margin=2.5cm]{geometry}
+
+\input{preamble.tex}
+
+\begin{document}
+\pagecolor{Black}
+\color{white}
+
+\begin{titlepage}
+	\begin{center}
+		\vspace*{3cm}
+		\includegraphics[width=7.5cm]{fantomen.pdf}
+		
+		\vspace*{7cm}
+		\huge
+		Formelsamlingen i Dragos skattkamare
+
+		\vspace*{0.5cm}
+		\Large
+		Författare: \textit{Djungelpatrullens matte-avdelning}
+
+		\normalsize
+	\end{center}
+\end{titlepage}
+
+\pagecolor{white}
+\color{black}
+
+\tableofcontents
+
+\newpage
+
+\include{pages/linalg.tex}
+
+\end{document}

@@ -1,0 +1,53 @@
+\usepackage[swedish]{babel}
+
+\usepackage{hyperref} % Gör sektioner klickbara
+
+\usepackage{physics}
+\usepackage{amsmath, amssymb, amsthm}
+
+\usepackage[dvipsnames]{xcolor} % Anmärkningar
+\usepackage[most]{tcolorbox}
+\newtcolorbox{der}
+{
+	boxrule=0pt,
+	colback=white,
+	frame hidden,
+	sharp corners,
+	enhanced,
+	borderline west={1pt}{0pt}{LimeGreen},
+	breakable=true
+}
+\newtcolorbox{ber}
+{
+	boxrule=0pt,
+	colback=white,
+	frame hidden,
+	sharp corners,
+	enhanced,
+	borderline west={1pt}{0pt}{Red},
+	breakable=true
+}
+\newtcolorbox{omv}
+{
+	boxrule=0pt,
+	colback=white,
+	frame hidden,
+	sharp corners,
+	enhanced,
+	borderline west={1pt}{0pt}{RoyalBlue},
+	breakable=true
+}
+\newtcolorbox{features}
+{
+	boxrule=0pt,
+	colback=white,
+	frame hidden,
+	sharp corners,
+	enhanced,
+	borderline west={1pt}{0pt}{WildStrawberry},
+	breakable=true
+}
+
+% -- Komandon --
+\newcommand{\defeq}{\stackrel{\Delta}{=}}
+\newcommand{\leteq}{\stackrel{\text{låt}}{=}}

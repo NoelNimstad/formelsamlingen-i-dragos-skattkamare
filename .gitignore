@@ -1,0 +1,14 @@
+/*
+!pages/
+pages/*
+
+# Misc
+!.gitignore
+
+# Output
+!main.pdf
+
+# Pages
+!main.tex
+!preamble.tex
+!pages/linalg.tex
