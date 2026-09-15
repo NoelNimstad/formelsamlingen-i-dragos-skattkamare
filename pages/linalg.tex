@@ -1,5 +1,33 @@
 \section{Linjär algebra}
 
+\subsection{Vektorer}
+\subsubsection{Vektoroperationer}
+
+\paragraph{\href{https://sv.wikipedia.org/wiki/Skalärprodukt}{Skalärprodukter}:}
+
+\begin{features}
+	\textbf{Egenskaper av skalärprodukten}
+
+	Skalärprodukten är bilinjär, detta innebär:
+	\begin{itemize}
+		\item \textbf{Skalbar:} $a\vec{u}\cdot\vec{v}=\vec{u}\cdot a\vec{v}=a(\vec{u}\cdot\vec{v})$
+		\item \textbf{Distributivitet:} $\vec{u}\cdot(\vec{v}+\vec{w})=\vec{u}\cdot\vec{v}+\vec{u}\cdot\vec{w}$
+		\item \textbf{Kommutativitet:} $\vec{u}\cdot\vec{v}=\vec{v}\cdot\vec{u}$
+	\end{itemize}
+\end{features}
+
+\paragraph{\href{https://sv.wikipedia.org/wiki/Kryssprodukt}{Kryssprodukten}:}
+
+\begin{features}
+	\textbf{Egenskaper av kryssprodukten}
+
+	\begin{itemize}
+		\item \textbf{Skalbar:} $a\vec{u}\cross\vec{v}=\vec{u}\cross a\vec{v}=a(\vec{u}\cross\vec{v})$
+		\item \textbf{Distributivitet:} $\vec{u}\cross(\vec{v}+\vec{w})=\vec{u}\cross\vec{v}+\vec{u}\cross\vec{w}$
+		\item \textbf{Anti-kommutativitet:} $\vec{u}\cross\vec{v}=-\vec{v}\cross\vec{u}$
+	\end{itemize}
+\end{features}
+
 \subsection{Linjer}
 
 \subsubsection{Vektorform}\label{s:linalg:linje:vektor-form}
@@ -7,7 +35,7 @@ En linje i planet $\mathbb{R}^2$ eller rummet $\mathbb{R}^3$ i vektorform är en
 $$
 	L:P+\vec{v}t,\quad t\in\mathbb{R}
 $$
-Där $P$ är en punkt i planet/rummet, och $\vec{v}$ riktningsvektorn av linjen.
+Där $P\in L$ är en punkt på linjen, och $\vec{v}$ riktningsvektorn av linjen.
 
 \begin{ber}
 \textbf{Beräkning från två angivna punkter $P$ och $Q$}
@@ -33,9 +61,9 @@ $$
 \end{omv}
 
 \subsubsection{Affin form}\label{s:linalg:linje:affin-form}
-En linje i planet $\mathbb{R}^2$ i affin form är en linje $L$ skriven i formen:
+En linje i planet $\mathbb{R}^2$ (OBS, inte rummet!) i affin form är en linje $L$ skriven i formen:
 $$
-	L=\qty{(x;y)\in\mathbb{R}^2:ax+by=c}
+	L=ax+by=c
 $$
 där $a,b,c\in\mathbb{R}$ är konstanter.
 
@@ -68,7 +96,15 @@ För ett finare uttryck än $\qty(0,\frac{c}{b})$, om du vet någon punkt $\qty(
 ligger på linjen, så kan den användas istället.
 \end{omv}
 
-\subsection{Plan}
+\subsection{\href{https://sv.wikipedia.org/wiki/Plan_(geometri)}{Plan}}
+
+\subsubsection{Vektorform}
+
+En ett plan i rummet $\mathbb{R}^3$ i vektorform är ett plan $\Pi$ skriven i formen:
+$$
+	\Pi:P+\vec{u}s+\vec{v}t,\quad s,t\in\mathbb{R}
+$$
+Där $P\in\Pi$ är en punkt i planet, och $\vec{u},\vec{v}$ riktningsvektornerna av linjen.
 
 \subsubsection{Affin form}\label{s:linalg:plan:affin-form}
 
@@ -97,7 +133,7 @@ och $O$, så blir $\vec{n}\cdot O$ någon konstant, som vi betäcknar $d$.
 Låt slutligen våran punkt på planet $P\leteq(x,y,z)$:
 \begin{align*}
 	(a,b,c)\cdot(x,y,z)&=d\\
-	\therefore ax+by+cz+d&=d
+	\therefore ax+by+cz&=d
 \end{align*}
 \end{der}
 
@@ -107,30 +143,110 @@ Låt slutligen våran punkt på planet $P\leteq(x,y,z)$:
 
 \subsection{Avstånd}
 
-\subsection{Vektor operationer}
+\subsection{\href{https://sv.wikipedia.org/wiki/Bas_(linjär_algebra)}{Baser}}
 
-\subsubsection{\href{https://sv.wikipedia.org/wiki/Skalärprodukt}{Skalärprodukten}}
+\subsubsection{Bildning av baser}
 
-\begin{features}
-	\textbf{Egenskaper av skalärprodukten}
+\paragraph{Matriskontroll:}
+För att kontrollera om vektorerna $\{\vec{v}_j\}_{j=1}^p$ bildar en bas,
+bilda en matris med vektorerna som kolumner och betrakta om dess determinant är nollskiljt:
+$$
+	\qty|\begin{matrix}
+		\vec{v}_1^\top,\vec{v}_2^\top,\dots,\vec{v}_p^\top
+	\end{matrix}|\stackrel{?}{=}0
+$$
+Om den är det, så bildar vektorerna en bas, annars gör de inte det.
+Detta följer då en determinant av $0$ innebär att vektorerna är linjärt beroende.
 
-	Skalärprodukten är bilinjär, detta innebär:
-	\begin{itemize}
-		\item \textbf{Skalbar:} $a\vec{u}\cdot\vec{v}=\vec{u}\cdot a\vec{v}=a(\vec{u}\cdot\vec{v})$
-		\item \textbf{Distributivitet:} $\vec{u}\cdot(\vec{v}+\vec{w})=\vec{u}\cdot\vec{v}+\vec{u}\cdot\vec{w}$
-		\item \textbf{Kommutativitet:} $\vec{u}\cdot\vec{v}=\vec{v}\cdot\vec{u}$
-	\end{itemize}
-\end{features}
+\subsection{Matriser}
+En matris, ofta betecknade $\mathbf{A}$ och $\mathbf{B}$, är ett 2 dimensionellt
+rutnät/tabell av tal $a_{ij}$, där $i$ och $j$ är dess rad respektive kolumn.
 
-\subsubsection{\href{https://sv.wikipedia.org/wiki/Kryssprodukt}{Kryssprodukten}}
+Matriser är utskrivna som:
+$$
+\mathbf{A}=\qty(\begin{matrix}
+	a_{11}&a_{12}&\dots&a_{1n}\\
+	a_{21}&a_{22}&\dots&a_{2n}\\
+	\vdots&\vdots&\ddots&\vdots\\
+	a_{m1}&a_{m2}&\dots&a_{mn}
+\end{matrix})\in\mathbb{R}^{m\times n},
+$$
+där $\mathbf{A}$ sägs vara av \emph{typ} eller \emph{storlek} $m\times n$. 
+Alternativt kan $\mathbf{A}$ skrivas i kortform som $\mathbf{A}=(a_{ij})$.
 
-\begin{features}
-	\textbf{Egenskaper av Kryssprodukten}
+Matriser dyker upp ofta naturligt i flera sammanhang, bland annat då vi löser
+LES med gausselimination. Dessa skrivs då som \emph{augmenterade matriser}:
+$$
+	\left\{\,\begin{matrix}
+		ax&+&by&=&c\\
+		dx&+&ey&=&f
+	\end{matrix}\right.\longrightarrow\begin{amatrix}{2}
+		a&b&c\\
+		d&e&f
+	\end{amatrix}
+$$
+där det räta sträcket representerar ett $=$ tecken.
 
-	Skalärprodukten är bilinjär, detta innebär:
-	\begin{itemize}
-		\item \textbf{Skalbar:} $a\vec{u}\cross\vec{v}=\vec{u}\cross a\vec{v}=a(\vec{u}\cross\vec{v})$
-		\item \textbf{Distributivitet:} $\vec{u}\cross(\vec{v}+\vec{w})=\vec{u}\cross\vec{v}+\vec{u}\cross\vec{w}$
-		\item \textbf{Anti-kommutativitet:} $\vec{u}\cross\vec{v}=-\vec{v}\cross\vec{u}$
-	\end{itemize}
-\end{features}
+\subsubsection{Matrisoperationer}
+
+\paragraph{Addition:} För matriserna $\mathbf{A}=(a_{ij})$ och $\mathbf{B}=(b_{ij})$,
+båda av samma typ, defineras $\mathbf{A}+\mathbf{B}$ som:
+$$
+	\mathbf{A}+\mathbf{B}\defeq(a_{ij}+b_{ij})=\qty(\begin{matrix}
+		a_{11}+b_{11}&a_{12}+b_{12}&\dots&a_{1n}+b_{1n}\\
+		a_{21}+b_{21}&a_{22}+b_{22}&\dots&a_{2n}+b_{2n}\\
+		\vdots&\vdots&\ddots&\vdots\\
+		a_{m1}+b_{m1}&a_{m2}+b_{m2}&\dots&a_{mn}+b_{mn}
+	\end{matrix})
+$$
+
+\paragraph{Multiplikation med skalärer:} Om $\mathbf{A}\in\mathbb{R}^{m\times n}$ och
+$\lambda\in\mathbb{R}$ så är dess produkt:
+$$
+	\lambda\mathbf{A}\defeq(\lambda a_{ij})=\qty(\begin{matrix}
+		\lambda a_{11}&\lambda a_{12}&\dots&\lambda a_{1n}\\
+		\lambda a_{21}&\lambda a_{22}&\dots&\lambda a_{2n}\\
+		\vdots&\vdots&\ddots&\vdots\\
+		\lambda a_{m1}&\lambda a_{m2}&\dots&\lambda a_{mn}
+	\end{matrix})
+$$
+
+\paragraph{Multiplikation:} Om $\mathbf{A}$ är av typ $m\times n$, och $B$ av $n\times p$
+(\textbf{OBS} andra respektive första dimensionen, i detta fall $n$, av $\mathbf{A},\mathbf{B}$ måste vara like!),
+så är $\mathbf{AB}$ definerat som:
+\begin{align*}
+	\mathbf{AB}&\defeq\qty(\begin{matrix}
+		\vec{\alpha}_1\\
+		\vdots\\
+		\vec{\alpha}_i\\
+		\vdots\\
+		\vec{\alpha}_m
+	\end{matrix})\qty(\begin{matrix}
+		\vec{\beta}^\top_1\\
+		\vdots\\
+		\vec{\beta}^\top_j\\
+		\vdots\\
+		\vec{\beta}^\top_n
+	\end{matrix})=\qty(\begin{matrix}
+		a_{11}&\dots&a_{1n}\\
+		\vdots&&\vdots\\
+		a_{i1}&\dots&a_{in}\\
+		\vdots&&\vdots\\
+		a_{m1}&\dots&a_{mn}
+	\end{matrix})\qty(\begin{matrix}
+		a_{11}&\dots&a_{1j}&\dots&a_{1p}\\
+		\vdots&&\vdots&&\vdots\\
+		a_{n1}&\dots&a_{nj}&\dots&a_{np}\\
+	\end{matrix})\\
+	&=\qty(\begin{matrix}
+		\vec{\alpha}_1\cdot\vec{\beta}_1&\cdots&\vec{\alpha}_1\cdot\vec{\beta}_j&\cdots&\vec{\alpha}_1\cdot\vec{\beta}_n\\
+		\vdots&&\vdots&&\vdots\\
+		\vec{\alpha}_i\cdot\vec{\beta}_1&\cdots&\vec{\alpha}_i\cdot\vec{\beta}_j&\cdots&\vec{\alpha}_i\cdot\vec{\beta}_n\\
+		\vdots&&\vdots&&\vdots\\
+		\vec{\alpha}_m\cdot\vec{\beta}_1&\cdots&\vec{\alpha}_m\cdot\vec{\beta}_j&\cdots&\vec{\alpha}_m\cdot\vec{\beta}_n
+	\end{matrix}),
+\end{align*}
+eller, alternativt uttryckt som:
+$$
+(\mathbf{AB})_{ij}=\sum_{k=1}^na_{ik}b_{kj}.
+$$

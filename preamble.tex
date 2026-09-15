@@ -51,3 +51,9 @@
 % -- Komandon --
 \newcommand{\defeq}{\stackrel{\Delta}{=}}
 \newcommand{\leteq}{\stackrel{\text{låt}}{=}}
+
+\newenvironment{amatrix}[1]{%
+  \left(\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right)
+}
