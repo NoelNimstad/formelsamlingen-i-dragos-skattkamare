@@ -4,6 +4,8 @@ pages/*
 
 # Misc
 !.gitignore
+!fantomen.pdf
+!index.html
 
 # Output
 !main.pdf
