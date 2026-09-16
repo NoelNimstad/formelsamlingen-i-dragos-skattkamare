@@ -48,8 +48,14 @@
 	breakable=true
 }
 
+% -- Fixa QED --
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
 % -- Komandon --
+\newcommand{\matr}[1]{\mathbf{#1}}
+
 \newcommand{\defeq}{\stackrel{\Delta}{=}}
+\newcommand{\defeqto}{\stackrel{\text{def}}{=}}
 \newcommand{\leteq}{\stackrel{\text{låt}}{=}}
 
 \newenvironment{amatrix}[1]{%

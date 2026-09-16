@@ -159,20 +159,20 @@ Om den är det, så bildar vektorerna en bas, annars gör de inte det.
 Detta följer då en determinant av $0$ innebär att vektorerna är linjärt beroende.
 
 \subsection{Matriser}
-En matris, ofta betecknade $\mathbf{A}$ och $\mathbf{B}$, är ett 2 dimensionellt
+En matris, ofta betecknade $\matr{A}$ och $\matr{B}$, är ett 2 dimensionellt
 rutnät/tabell av tal $a_{ij}$, där $i$ och $j$ är dess rad respektive kolumn.
 
 Matriser är utskrivna som:
 $$
-\mathbf{A}=\qty(\begin{matrix}
+\matr{A}=\qty(\begin{matrix}
 	a_{11}&a_{12}&\dots&a_{1n}\\
 	a_{21}&a_{22}&\dots&a_{2n}\\
 	\vdots&\vdots&\ddots&\vdots\\
 	a_{m1}&a_{m2}&\dots&a_{mn}
 \end{matrix})\in\mathbb{R}^{m\times n},
 $$
-där $\mathbf{A}$ sägs vara av \emph{typ} eller \emph{storlek} $m\times n$. 
-Alternativt kan $\mathbf{A}$ skrivas i kortform som $\mathbf{A}=(a_{ij})$.
+där $\matr{A}$ sägs vara av \emph{typ} eller \emph{storlek} $m\times n$. 
+Alternativt kan $\matr{A}$ skrivas i kortform som $\matr{A}=(a_{ij})$.
 
 Matriser dyker upp ofta naturligt i flera sammanhang, bland annat då vi löser
 LES med gausselimination. Dessa skrivs då som \emph{augmenterade matriser}:
@@ -180,7 +180,7 @@ $$
 	\left\{\,\begin{matrix}
 		ax&+&by&=&c\\
 		dx&+&ey&=&f
-	\end{matrix}\right.\longrightarrow\begin{amatrix}{2}
+	\end{matrix}\right.\quad\longrightarrow\quad\begin{amatrix}{2}
 		a&b&c\\
 		d&e&f
 	\end{amatrix}
@@ -189,10 +189,11 @@ där det räta sträcket representerar ett $=$ tecken.
 
 \subsubsection{Matrisoperationer}
 
-\paragraph{Addition:} För matriserna $\mathbf{A}=(a_{ij})$ och $\mathbf{B}=(b_{ij})$,
-båda av samma typ, defineras $\mathbf{A}+\mathbf{B}$ som:
+\paragraph{Addition:}
+För matriserna $\matr{A}=(a_{ij})$ och $\matr{B}=(b_{ij})$, båda av samma typ,
+defineras $\matr{A}+\matr{B}$ som:
 $$
-	\mathbf{A}+\mathbf{B}\defeq(a_{ij}+b_{ij})=\qty(\begin{matrix}
+	\matr{A}+\matr{B}\defeq(a_{ij}+b_{ij})=\qty(\begin{matrix}
 		a_{11}+b_{11}&a_{12}+b_{12}&\dots&a_{1n}+b_{1n}\\
 		a_{21}+b_{21}&a_{22}+b_{22}&\dots&a_{2n}+b_{2n}\\
 		\vdots&\vdots&\ddots&\vdots\\
@@ -200,10 +201,17 @@ $$
 	\end{matrix})
 $$
 
-\paragraph{Multiplikation med skalärer:} Om $\mathbf{A}\in\mathbb{R}^{m\times n}$ och
+\begin{features}
+	\textbf{Egenskaper av matrisaddition}
+
+	På grund av dess definition, har matrisaddition samma egenskaper som skaläraddition.
+\end{features}
+
+\paragraph{Multiplikation med skalärer:}
+Om $\matr{A}\in\mathbb{R}^{m\times n}$ och
 $\lambda\in\mathbb{R}$ så är dess produkt:
 $$
-	\lambda\mathbf{A}\defeq(\lambda a_{ij})=\qty(\begin{matrix}
+	\lambda\matr{A}\defeq(\lambda a_{ij})=\qty(\begin{matrix}
 		\lambda a_{11}&\lambda a_{12}&\dots&\lambda a_{1n}\\
 		\lambda a_{21}&\lambda a_{22}&\dots&\lambda a_{2n}\\
 		\vdots&\vdots&\ddots&\vdots\\
@@ -211,11 +219,18 @@ $$
 	\end{matrix})
 $$
 
-\paragraph{Multiplikation:} Om $\mathbf{A}$ är av typ $m\times n$, och $B$ av $n\times p$
-(\textbf{OBS} andra respektive första dimensionen, i detta fall $n$, av $\mathbf{A},\mathbf{B}$ måste vara like!),
-så är $\mathbf{AB}$ definerat som:
+\begin{features}
+	\textbf{Egenskaper av multiplikation av matriser med skalärer}
+
+	På grund av dess definition, har multiplikation av matriser med skalärer samma
+	egenskaper som skalärmultiplikation.
+\end{features}
+
+\paragraph{Multiplikation:} Om $\matr{A}$ är av typ $m\times n$, och $B$ av $n\times p$
+(\textbf{OBS} andra respektive första dimensionen, i detta fall $n$, av $\matr{A},\matr{B}$ måste vara like!),
+så är $\matr{AB}$ definerat som:
 \begin{align*}
-	\mathbf{AB}&\defeq\qty(\begin{matrix}
+	\matr{AB}&\defeq\qty(\begin{matrix}
 		\vec{\alpha}_1\\
 		\vdots\\
 		\vec{\alpha}_i\\
@@ -248,5 +263,70 @@ så är $\mathbf{AB}$ definerat som:
 \end{align*}
 eller, alternativt uttryckt som:
 $$
-(\mathbf{AB})_{ij}=\sum_{k=1}^na_{ik}b_{kj}.
+	(\matr{AB})_{ij}=\sum_{k=1}^na_{ik}b_{kj}.
 $$
+
+\begin{features}
+	\textbf{Egenskaper av matrismultiplikation}
+
+	\textbf{OBS} matrismultiplikation är \emph{ej} kommutativ!
+
+	\begin{itemize}
+		\item \textbf{Associativitet:} $\matr{A}(\matr{B}\matr{C})=(\matr{A}\matr{B})\matr{C}$ \begin{proof}
+			Låt $\matr{A},\matr{B},\matr{C}$ vara av typer $m\times n$, $n\times p$, $p\times q$.
+			\begin{align*}
+				(\overbrace{(\matr{A}\matr{B})}^{m\times p}\matr{C})_{ij}
+				&\defeqto\sum_{k=1}^p(\matr{A}\matr{B})_{ik}\matr{C}_{kj}
+				=\sum_{k=1}^p\qty(\sum_{\ell=1}^na_{i\ell}b_{\ell k})c_{kj}\\
+				&=\sum_{k=1}^p\sum_{\ell=1}^na_{i\ell}b_{\ell k}c_{kj}
+				=\sum_{\ell=1}^n\qty(\sum_{k=1}^pa_{i\ell}b_{\ell k}c_{kj})\\
+				&=\sum_{\ell=1}^na_{i\ell}\qty(\sum_{k=1}^pb_{\ell k}c_{kj})
+				=\sum_{\ell=1}^na_{i\ell}(\matr{B}\matr{C})_{\ell j}
+				=(\matr{A}(\matr{B}\matr{C}))_{ij}
+			\end{align*}
+		\end{proof}
+		\item \textbf{Distributivitet:} $\matr{A}(\matr{B}+\matr{C})=\matr{A}\matr{B}+\matr{A}\matr{C}$ 
+	\end{itemize}
+\end{features}
+
+\subsubsection{Särskilda matriser}
+
+\paragraph{Nollmatrisen:} Nollmatrisen skrivs $\matr{0}$ och är definerad som en
+$m\times n$ matris där $\matr{0}_{ij}=0\forall i,j$.
+
+För Nollmatrisen och någon annan matris $\matr{A}$ av godtycklig typ och skalär $\lambda$
+gäller följande räckneregler:
+\begin{itemize}
+	\item $\matr{0}\matr{A}=\matr{A}\matr{0}=\matr{0}$
+	\item $\matr{A}+\matr{0}=\matr{A}$
+	\item $\matr{A}+(-1)\matr{A}=\matr{0}$
+	\item $\lambda\matr{0}=\matr{0}$
+\end{itemize}
+
+\paragraph{Enhetsmatrisen:} Enhetsmatrisen, också känd som identitetsmatrisen,
+betecknad $\matr{E}_n$ (eller bara $\matr{E}$ om kontext gör storleken meningslös),
+är en matris definerad enligt:
+\begin{align*}
+	&\matr{E}_1=\qty(\begin{matrix}
+		1
+	\end{matrix}),&\matr{E}_2=\qty(\begin{matrix}
+		1 & 0\\
+		0 & 1
+	\end{matrix})&\\
+	&\matr{E}_3=\qty(\begin{matrix}
+		1 & 0 & 0\\
+		0 & 1 & 0\\
+		0 & 0 & 1
+	\end{matrix}),&\matr{E}_n=\underbrace{\qty(\begin{matrix}
+		1 & 0 & 0 & \dots & 0\\
+		0 & 1 & 0 & \dots & 0\\
+		0 & 0 & 1 & \dots & 0\\
+		\vdots & \vdots & \vdots & \ddots & \vdots\\
+		0 & 0 & 0 & 0 & 1
+	\end{matrix})}_\text{$n$ ggr}&
+\end{align*}
+d.v.s. en matris av typ $n\times n$, som är noll vid alla positioner utom dess
+diagonal.
+
+Dess namn följer av dess egenskaper som \emph{enheten} av en $n\times n$ matrisring.
+Därmed följer även att för någon annan matris $\matr{A}$ så är $\matr{E}\matr{A}=\matr{A}\matr{E}=\matr{A}$.
