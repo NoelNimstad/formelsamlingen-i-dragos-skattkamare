@@ -52,14 +52,24 @@
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
 % -- Komandon --
+\newcommand{\SA}{\text{ s.a. }}
+
 \newcommand{\matr}[1]{\mathbf{#1}}
 
 \newcommand{\defeq}{\stackrel{\Delta}{=}}
 \newcommand{\defeqto}{\stackrel{\text{def}}{=}}
 \newcommand{\leteq}{\stackrel{\text{låt}}{=}}
 
+\newcommand{\spn}{\operatorname{span}}
+\renewcommand{\ker}{\operatorname{Ker}}
+\newcommand{\noll}{\operatorname{Noll}}
+\newcommand{\koll}{\operatorname{Koll}}
+
 \newenvironment{amatrix}[1]{%
   \left(\begin{array}{@{}*{#1}{c}|c@{}}
 }{%
   \end{array}\right)
 }
+
+% -- Fixa bokstäver --
+\renewcommand{\epsilon}{\varepsilon}

@@ -1,6 +1,19 @@
 \section{Linjär algebra}
 
 \subsection{Vektorer}
+\subsubsection{Skrivsätt}
+Utöver koordinat-betäckningen $\vec{v}=(v_1,\dots,v_n)$, kan vektorer även beskrivas
+som matriser (se \ref{s:matris}) i antingen \emph{kolonnvektor} form som en $n\times 1$ matris:
+$$
+	\vec{v}=\qty(\begin{matrix}
+		v_1\\\vdots\\v_n
+	\end{matrix})
+$$
+eller \emph{radvektor} form som en $1\times n$ matris:
+$$
+	\vec{v}=\underbrace{\qty(v_1,\dots,v_n)}_{\text{\makebox[0pt]{Ofta $[v_1,\dots,v_n]$ för att undvika förväxling med koordinater}}}
+$$
+
 \subsubsection{Vektoroperationer}
 
 \paragraph{\href{https://sv.wikipedia.org/wiki/Skalärprodukt}{Skalärprodukter}:}
@@ -27,6 +40,49 @@
 		\item \textbf{Anti-kommutativitet:} $\vec{u}\cross\vec{v}=-\vec{v}\cross\vec{u}$
 	\end{itemize}
 \end{features}
+
+\subsubsection{Underrum}
+
+$\spn(\vec{v}_1,\dots,\vec{v}_n)\subsetneq\mathbb{R}^n$ kallas för ett underrum
+till $\mathbb{R}^n$. Altså är $\vec{v}_1,\dots,\vec{v}_n$ vektorer som inte spänner
+upp $\mathbb{R}^n$.
+
+\subsubsection{Dimension}
+Dimensionen av ett underrum $W$, skriven $\dim W$, är antalet vektorer i en bas
+för underrummet, vilket motsvarar det maximala antalet linjärt oberoende vektorer
+i rummet.
+
+\begin{ber}
+	\textbf{Exempel på icke-trivell dimension beräkning:}
+
+	Låt $\Pi:x+2y-z=0$. För att beräkna $\dim\Pi$, måste antalet linjärt
+	oberoende vektorer krävda för att spänna upp $\Pi$ beräknas. Vi skriver om i
+	vektorform, genom att låta $y=s,z=t\in\mathbb{R}$:
+	\begin{align*}
+		&x+2y-z=0\implies x=t-2s\\
+		&\therefore\qty(\begin{matrix}
+			x\\y\\z
+		\end{matrix})=\qty(\begin{matrix}
+			t-2s\\s\\t
+		\end{matrix})=s\qty(\begin{matrix}
+			-2\\1\\0
+		\end{matrix})+t\qty(\begin{matrix}
+			1\\0\\1
+		\end{matrix})\\
+		&\qty(\begin{matrix}
+			-2&1&0\\
+			1&0&1
+		\end{matrix})\sim\qty(\begin{matrix}
+			\boxed{-2}&1&0\\
+			0&\boxed{1}&2
+		\end{matrix}),\quad\text{pivotelement i varje rad}\implies\text{linjärt oberoende}\\
+		&\therefore\spn\qty{\qty(\begin{matrix}
+			-2\\1\\0
+		\end{matrix}),\qty(\begin{matrix}
+			1\\0\\1
+		\end{matrix})}=\Pi\implies\dim\Pi=2
+	\end{align*}
+\end{ber}
 
 \subsection{Linjer}
 
@@ -158,7 +214,7 @@ $$
 Om den är det, så bildar vektorerna en bas, annars gör de inte det.
 Detta följer då en determinant av $0$ innebär att vektorerna är linjärt beroende.
 
-\subsection{Matriser}
+\subsection{Matriser}\label{s:matris}
 En matris, ofta betecknade $\matr{A}$ och $\matr{B}$, är ett 2 dimensionellt
 rutnät/tabell av tal $a_{ij}$, där $i$ och $j$ är dess rad respektive kolumn.
 
@@ -227,31 +283,32 @@ $$
 \end{features}
 
 \paragraph{Multiplikation:} Om $\matr{A}$ är av typ $m\times n$, och $B$ av $n\times p$
-(\textbf{OBS} andra respektive första dimensionen, i detta fall $n$, av $\matr{A},\matr{B}$ måste vara like!),
-så är $\matr{AB}$ definerat som:
+(\textbf{OBS} andra respektive första dimensionen, i detta fall $n$, av $\matr{A},\matr{B}$ måste vara lika!),
+så är $\matr{AB}$ definerat som (för definition av $(\cdot)^\top$, se \ref{s:matris-transponering}):
 \begin{align*}
 	\matr{AB}&\defeq\qty(\begin{matrix}
-		\vec{\alpha}_1\\
-		\vdots\\
-		\vec{\alpha}_i\\
-		\vdots\\
+		\vec{\alpha}_1&
+		\dots&
+		\vec{\alpha}_i&
+		\dots&
 		\vec{\alpha}_m
 	\end{matrix})\qty(\begin{matrix}
-		\vec{\beta}^\top_1\\
+		\vec{\beta}_1^\top\\
 		\vdots\\
-		\vec{\beta}^\top_j\\
+		\vec{\beta}_j^\top\\
 		\vdots\\
-		\vec{\beta}^\top_n
-	\end{matrix})=\qty(\begin{matrix}
+		\vec{\beta}_n^\top
+	\end{matrix})\\
+	&=\qty(\begin{matrix}
 		a_{11}&\dots&a_{1n}\\
 		\vdots&&\vdots\\
 		a_{i1}&\dots&a_{in}\\
 		\vdots&&\vdots\\
 		a_{m1}&\dots&a_{mn}
 	\end{matrix})\qty(\begin{matrix}
-		a_{11}&\dots&a_{1j}&\dots&a_{1p}\\
+		b_{11}&\dots&b_{1j}&\dots&b_{1p}\\
 		\vdots&&\vdots&&\vdots\\
-		a_{n1}&\dots&a_{nj}&\dots&a_{np}\\
+		b_{n1}&\dots&b_{nj}&\dots&b_{np}\\
 	\end{matrix})\\
 	&=\qty(\begin{matrix}
 		\vec{\alpha}_1\cdot\vec{\beta}_1&\cdots&\vec{\alpha}_1\cdot\vec{\beta}_j&\cdots&\vec{\alpha}_1\cdot\vec{\beta}_n\\
@@ -286,6 +343,40 @@ $$
 			\end{align*}
 		\end{proof}
 		\item \textbf{Distributivitet:} $\matr{A}(\matr{B}+\matr{C})=\matr{A}\matr{B}+\matr{A}\matr{C}$ 
+	\end{itemize}
+\end{features}
+
+\paragraph{Transponering:}\label{s:matris-transponering}
+transponatet av en matris $\matr{A}$, skriven $\matr{A}^\top$,
+byter plats på matrisens rader och kolumner (\textbf{OBS} inte en $90^\circ$ rotation).
+
+\begin{ber}
+	\textbf{Exempel på transponering:}
+
+	Låt $\matr{A}$ vara sådan att:
+	$$
+		\matr{A}=\qty(\begin{matrix}
+			\vec{a}_1^\top\\
+			\vdots\\
+			\vec{a}_m^\top
+		\end{matrix})\in\mathbb{R}^{m\times n}
+	$$, där $\vec{a}^\top_j\in\mathbb{R}^n, j\in[1,m]\cap\mathbb{Z}$
+	är radvektorer. Då gäller att dess transponat beräcknas enligt:
+	$$
+		\matr{A}^\top=\qty(\begin{matrix}
+			\vec{a}_1&\dots&\vec{a}_m
+		\end{matrix})\in\mathbb{R}^{n\times m}
+	$$
+\end{ber}
+
+\begin{features}
+	\textbf{Egenskaper av transponatet}
+
+	\begin{itemize}
+		\item \textbf{Skalbar:} $(\lambda\matr{A})^\top=\lambda\matr{A}^\top$
+		\item \textbf{Involution:} $\qty(\matr{A}^\top)^\top=\matr{A}$
+		\item \textbf{Additiv:} $(\matr{A}+\matr{B})^\top=\matr{A}^\top+\matr{B}^\top$
+		\item \textbf{Anti-homomorfism:} $(\matr{A}\matr{B})^\top=\matr{B}^\top\matr{A}^\top$
 	\end{itemize}
 \end{features}
 
@@ -330,3 +421,28 @@ diagonal.
 
 Dess namn följer av dess egenskaper som \emph{enheten} av en $n\times n$ matrisring.
 Därmed följer även att för någon annan matris $\matr{A}$ så är $\matr{E}\matr{A}=\matr{A}\matr{E}=\matr{A}$.
+
+\paragraph{Symetriska matriser:} Om det gäller för en matris $\matr{A}$ att $\matr{A}^\top=\matr{A}$ (för definition
+av $(\cdot)^\top$, se \ref{s:matris-transponering}), så kallas $\matr{A}$ symmetrisk.
+
+\subsubsection{Kärnor}
+Mängden av alla lösningar till matrisekvationen $\matr{A}\vec{x}=\vec{0}$ kallas
+för $\matr{A}$:s kärna (eller nollrum) och betecknas $\ker(\matr{A})$ eller $\noll(\matr{A})$.
+Denna defineras enligt:
+$$
+	\ker(\matr{A})=\qty{\vec{x}\in\mathbb{R}^n:\matr{A}\vec{x}=\vec{0}}
+$$
+där $\matr{A}$ är av typ $m\times n$.
+
+\begin{ber}
+	\textbf{Kärnan av vissa särskilda matriser:}
+
+	\begin{itemize}
+		\item $\ker(\matr{0}_{m,n})=\mathbb{R}^n$
+		\item $\ker(\matr{E}_n)=\qty{\vec{0}}$
+	\end{itemize}
+\end{ber}
+
+\subsubsection{Nolldimensioner}
+Dimensionen av ett underrum är antalet vektorer i en bas, eller maximala antalet
+oberoende vektorer.
