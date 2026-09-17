@@ -9,3 +9,23 @@ definerar
 $$
 	\lim_{x\to a}f(x)=L
 $$
+
+\begin{ber}
+	\textbf{Exempel på bevis med $\epsilon$-$\delta$:}
+
+	Vi vill visa att
+	$$
+		\lim_{x\to0}f(x)=1.
+	$$
+
+	Enligt definitionen av $\epsilon$-$\delta$-bevis ska vi visa att $\forall\epsilon>0\exists\delta>0$ s.a.:
+	$$
+		0<\qty|x-0|=\qty|x|<\delta\implies\qty|\frac{x}{x}-1|\stackrel{x\neq0}{=}\qty|1-1|=0<\epsilon.
+	$$
+	Vi kan därmed för alla godtyckliga $\epsilon>0$ vilket $\delta=c\in\mathbb{R}^+$ som helst,
+	exempelvis $\delta=1$ som uppfyller $\epsilon$-$\delta$ definitionen. Altså
+	följer det att:
+	$$
+		\lim_{x\to0}\frac{x}{x}=1.
+	$$
+\end{ber}
