@@ -8,20 +8,19 @@
 \color{white}
 
 \begin{titlepage}
-	\begin{center}
-		\vspace*{5cm}
-		\includegraphics[width=5cm]{fantomen.pdf}
-		
-		\vspace*{7cm}
-		\Huge
-		Formelsamlingen i Dragos skattkamare
+    \begin{tikzpicture}[remember picture,overlay]
 
-		\vspace*{0.5cm}
-		\LARGE
-		Författare: \textit{Djungelpatrullens matte-avdelning}
+        % Titel
+        \node[align=center] at ([yshift=-7cm]current page.north) {
+            {\Huge Formelsamlingen i Dragos skattkamare}\\[0.5cm]
+            {\LARGE Författare: \textit{Djungelpatrullens matte-avdelning}}
+        };
 
-		\normalsize
-	\end{center}
+        % Fantomen
+        \node at ([yshift=6cm]current page.south) {
+            \includegraphics[width=15cm]{fantomen.pdf}
+        };
+    \end{tikzpicture}
 \end{titlepage}
 
 \pagecolor{white}
