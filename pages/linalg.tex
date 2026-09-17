@@ -444,5 +444,80 @@ där $\matr{A}$ är av typ $m\times n$.
 \end{ber}
 
 \subsubsection{Nolldimensioner}
-Dimensionen av ett underrum är antalet vektorer i en bas, eller maximala antalet
-oberoende vektorer.
+Nolldimensionen av en matris $\matr{A}$ är dimensionen av dess kärna,
+$$
+	\underbrace{\nullity(\matr{A})}_\text{\text{\makebox[0pt]{På svenska mer känd som $\nolldim(\matr{A})$}}}\defeq\dim(\ker\matr{A})
+$$
+
+\subsubsection{Kolonnrum}\label{s:matris:kolonnrum}
+Kolonnrummet för en matris $\matr{A}\in\mathbb{R}^{m\times n}$, betecknat $\koll(\matr{A})$,
+är det underrum i $\mathbb{R}^m$ som spänns upp av matrisens kolonnvektorer. Dimensionen
+för kolonnrummet, $\dim(\koll\matr{A})$, kallas för matrisens \emph{rang} och betecknas
+$\rang(\matr{A})$. Vid gausselimination motsvarar rangen antalet pivotelement
+i trappstegsformen.
+
+\subsubsection{Dimensionssatsen}\label{s:matris:dimensionssatsen}
+Dimensionssatsen, ofta kallad rangsatsen, relaterar dimensionerna för en matris
+kolonnrum och nollrum med dess totala antal kolonner.
+
+Om $\matr{A}\in\mathbb{R}^{m\times n}$ (altså med $n$ kolonner) så gäller:
+$$
+	\dim(\koll\matr{A}) + \nullity(\matr{A})=n
+$$
+
+\begin{features}
+	\textbf{Betydelse i trappstegsform}
+	
+	Satsen ger för linjära ekvationssystem att varje kolonn i en radreducerad
+	matris måste antingen vara en pivotkolonn eller motsvara en fri variabel.
+	\begin{itemize}
+		\item $\dim(\koll\matr{A}) = \text{Antal pivotkolonner (bundna variabler)}$
+		\item $\dim(\nullity\matr{A}) = \text{Antal fria variabler}$
+	\end{itemize}
+	Eftersom en kolonn inte kan vara båda samtidigt, blir summan alltid lika med
+	det totala antalet kolonner $n$.
+\end{features}
+
+\begin{ber}
+	\textbf{Exempel på beräkning enligt dimensionssatsen:}
+
+	Betrakta $\matr{A}\in\mathbb{R}^{3\times 4}$:
+	$$
+		\matr{A}=\qty(\begin{matrix} 
+			1&-2&3&1\\ 
+			2&-4&7&4\\ 
+			3&-6&10&5 
+		\end{matrix})
+	$$
+	Efter gausselimination får vi ut, i reducerad trappstegsform, matrisen $\matr{R}$:
+	$$
+		\matr{A}\sim\matr{R}=\qty(\begin{matrix} 
+			\boxed{1} & -2 & 0 & -5 \\ 
+			0 & 0 & \boxed{1} & 2 \\ 
+			0 & 0 & 0 & 0 
+		\end{matrix})
+	$$
+	
+	\textbf{Tolkning av trappstegsformen $\matr{B}$:}
+	\begin{itemize}
+		\item Kolonn 1 och 3 innehåller pivotelement. Detta betyder att de
+		ursprungliga kolonnerna 1 och 3 i $\matr{A}$ bildar en bas för kolonnrummet.
+		Rangen är alltså:
+		$$
+			\rang(\matr{A})=\dim(\koll\matr{A})=2
+		$$
+		
+		\item Kolonn 2 och 4 saknar pivotelement. Detta innebär att variablerna
+		$x_2$ och $x_4$ är fria variabler när vi löser det homogena systemet $\matr{A}\vec{x}=\vec{0}$.
+		Eftersom varje fri variabel ger en unik basvektor i $\ker(\matr{A})$:
+		$$
+			\nullity(\matr{A})=\dim(\ker\matr{A})=2
+		$$
+	\end{itemize}
+
+	Slutligen, enligt dimensionssatsen bör summan av $\rang(\matr{A})$ och
+	$\nullity(\matr{A})$ vara antalet kolloner, $4$:
+	$$
+		\rang(\matr{A})+\nullity(\matr{A})=2+2=4\quad\checkmark
+	$$
+\end{ber}
