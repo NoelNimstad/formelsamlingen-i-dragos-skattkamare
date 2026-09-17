@@ -450,9 +450,9 @@ $$
 $$
 
 \subsubsection{Kolonnrum}\label{s:matris:kolonnrum}
-Kolonnrummet för en matris $\matr{A}\in\mathbb{R}^{m\times n}$, betecknat $\koll(\matr{A})$,
+Kolonnrummet för en matris $\matr{A}\in\mathbb{R}^{m\times n}$, betecknat $\kol(\matr{A})$,
 är det underrum i $\mathbb{R}^m$ som spänns upp av matrisens kolonnvektorer. Dimensionen
-för kolonnrummet, $\dim(\koll\matr{A})$, kallas för matrisens \emph{rang} och betecknas
+för kolonnrummet, $\dim(\kol\matr{A})$, kallas för matrisens \emph{rang} och betecknas
 $\rang(\matr{A})$. Vid gausselimination motsvarar rangen antalet pivotelement
 i trappstegsformen.
 
@@ -462,7 +462,7 @@ kolonnrum och nollrum med dess totala antal kolonner.
 
 Om $\matr{A}\in\mathbb{R}^{m\times n}$ (altså med $n$ kolonner) så gäller:
 $$
-	\dim(\koll\matr{A}) + \nullity(\matr{A})=n
+	\dim(\kol\matr{A}) + \nullity(\matr{A})=n
 $$
 
 \begin{features}
@@ -471,7 +471,7 @@ $$
 	Satsen ger för linjära ekvationssystem att varje kolonn i en radreducerad
 	matris måste antingen vara en pivotkolonn eller motsvara en fri variabel.
 	\begin{itemize}
-		\item $\dim(\koll\matr{A}) = \text{Antal pivotkolonner (bundna variabler)}$
+		\item $\dim(\kol\matr{A}) = \text{Antal pivotkolonner (bundna variabler)}$
 		\item $\dim(\nullity\matr{A}) = \text{Antal fria variabler}$
 	\end{itemize}
 	Eftersom en kolonn inte kan vara båda samtidigt, blir summan alltid lika med
@@ -504,7 +504,7 @@ $$
 		ursprungliga kolonnerna 1 och 3 i $\matr{A}$ bildar en bas för kolonnrummet.
 		Rangen är alltså:
 		$$
-			\rang(\matr{A})=\dim(\koll\matr{A})=2
+			\rang(\matr{A})=\dim(\kol\matr{A})=2
 		$$
 		
 		\item Kolonn 2 och 4 saknar pivotelement. Detta innebär att variablerna
@@ -521,3 +521,272 @@ $$
 		\rang(\matr{A})+\nullity(\matr{A})=2+2=4\quad\checkmark
 	$$
 \end{ber}
+
+% ---------------------------------------------
+% ---------------------------------------------
+% ---------------------------------------------
+
+\subsubsection{Inversmatriser}
+
+\paragraph{Vänsterinvers:} $\matr{V}$ är en \emph{vänsterinvers} till $\matr{A}$
+om $\matr{V}\matr{A}=\matr{E}$.
+
+\paragraph{Högerinvers:} $\matr{H}$ är en \emph{högerinvers} till $\matr{A}$
+om $\matr{A}\matr{H}=\matr{E}$.
+
+\paragraph{Inverterbar:} $\matr{A}$ är \emph{inverterbar} om
+$\exists\matr{A}^{-1}\SA\matr{A}^{-1}\matr{A}=\matr{A}\matr{A}^{-1}=\matr{E}$.
+$\matr{A}^{-1}$ kallas då för \emph{inversen} till $\matr{A}$.
+
+\begin{lemma}[Inversentydlighet]
+	\textbf{(1)} Om $\matr{V}\matr{A}=\matr{E}$ och $\matr{A}\matr{H}=\matr{E}$, då
+	$\matr{V}=\matr{H}$, och $\matr{A}$ är inverterbar.
+	\textbf{(2)} Om $\matr{A}$ är inverterbar så är inversen entydligt bestämd.
+
+	\begin{proof}
+		\textbf{(1)}
+		$$
+			\matr{V}=\matr{V}\matr{E}=\matr{V}(\matr{A}\matr{H})
+			=(\matr{V}\matr{A})\matr{H}=\matr{E}\matr{H}=\matr{H}
+		$$
+		\textbf{(2)} Antag $\matr{B}$ och $\tilde{\matr{B}}$ både inverser till $\matr{A}$.
+		Då gäller speciellt att:
+		$$
+			\left.\begin{matrix}
+				\matr{B}\matr{A}=\matr{E}\\
+				\matr{A}\tilde{\matr{B}}=\matr{E}
+			\end{matrix}\,\right\}\implies\matr{B}=\tilde{\matr{B}}\quad\contra
+		$$
+	\end{proof}
+\end{lemma}
+
+\begin{ber}
+	\textbf{Exempel på beräkning av matrisinvers:}
+
+	Låt
+	$$
+		\matr{A}=\qty(\begin{matrix}
+			0&-1\\
+			1&0
+		\end{matrix}).
+	$$
+	Vi vill bestäma $\matr{B}\SA\matr{A}\matr{B}=\matr{E}_2$.
+	\begin{align*}
+		&\qty(\begin{matrix}
+			0&-1\\
+			1&0
+		\end{matrix})\qty(\begin{matrix}
+			a&b\\
+			c&d
+		\end{matrix})=\qty(\begin{matrix}
+			1&0\\
+			0&1
+		\end{matrix})\\
+		\iff&\qty(\begin{matrix}
+			-c&-d\\a&b
+		\end{matrix})=\qty(\begin{matrix}
+			1&0\\0&1
+		\end{matrix})\\
+		\implies&\matr{H}=\qty(\begin{matrix}
+			0&1\\
+			-1&0
+		\end{matrix})
+	\end{align*}
+	Vi kollar om denna är vänsterinvers med (om $\matr{B}\matr{A}=\matr{E}$):
+	\begin{align*}
+		\qty(\begin{matrix}
+			0&-1\\
+			1&0
+		\end{matrix})\qty(\begin{matrix}
+			0&1\\
+			-1&0
+		\end{matrix})=\qty(\begin{matrix}
+			1&0\\
+			0&1
+		\end{matrix})\quad\checkmark
+	\end{align*}
+\end{ber}
+
+\begin{features}
+	\textbf{Egenskaper av matrisinverser:}
+
+	\begin{itemize}
+		\item $\matr{E}=\matr{E}^{-1}$
+		\item $\matr{A}$ typ $m\times n\implies\matr{V},\matr{H},\matr{A}^{-1}$ typ $n\times m$
+		\item $\nexists!\matr{V},\matr{H}\forall\matr{A}$
+	\end{itemize}
+\end{features}
+
+\subsection{26-9-17}
+
+Låt
+$$
+	A=\qty(\begin{matrix}
+		1&1&1&0\\
+		1&1&0&0\\
+		1&1&1&0
+	\end{matrix}),\vec{b}=\qty(\begin{matrix}
+		1\\2\\1
+	\end{matrix})
+$$
+
+$\matr{A}\vec{x}=\vec{0}$ har lösningar:
+$$
+	\vec{x}=s\qty(\begin{matrix}
+		-1\\1\\0\\0
+	\end{matrix})+t\qty(\begin{matrix}
+		0\\0\\0\\1
+	\end{matrix}),\quad s,t\in\mathbb{R}
+$$
+
+Vad har $\matr{A}\vec{x}=\vec{b}$ för lösningar?
+
+\begin{align*}
+	(\matr{A}\,|\,\vec{b})
+	&=\begin{amatrix}{4}
+		1&1&1&0&1\\
+		1&1&0&0&2\\
+		1&1&1&0&1
+	\end{amatrix}
+	\sim\begin{amatrix}{4}
+		1&1&1&0&1\\
+		0&0&-1&0&1\\
+		0&0&0&0&0
+	\end{amatrix}\\
+	&\sim\begin{amatrix}{4}
+		1&1&0&0&2\\
+		0&0&1&0&-1\\
+		0&0&0&0&0
+	\end{amatrix}
+	\iff\left\{\begin{matrix}
+		x_1+x_2=0\\x_3=-1\\x_2,x_4\text{ är fria}
+	\end{matrix}\right.
+\end{align*}
+
+Låt $x_2=s$, $x_4=t$. Då:
+$$
+	\vec{x}=\qty(\begin{matrix}
+		2-s\\s\\-1\\t
+	\end{matrix})=\qty(\begin{matrix}
+		2\\0\\-1\\0
+	\end{matrix})+\underbrace{s\qty(\begin{matrix}
+		-1\\1\\0\\0
+	\end{matrix})+t\qty(\begin{matrix}
+		0\\0\\0\\1
+	\end{matrix})}_\text{Lösningar till $\matr{A}\vec{x}=\vec{0}$}
+$$
+
+\begin{theorem}
+	\hl{Förläng senare}
+
+	Låt $\vec{x}_p$ vara \emph{en} lösning till $\matr{A}\vec{x}=\vec{b}$.
+	Då gäller att $\vec{x}$ allmän lösning till $\matr{A}\vec{x}=\vec{b}\iff\vec{x}$
+	är på formen $\vec{x}=\vec{x}_p+\vec{x}_n$ där $\vec{x}_n$ löser
+	$\matr{A}\vec{x}=\vec{0}$.
+
+	% ----------------
+	% Anmärkning start
+	% ----------------
+
+	$\vec{x}_p$ kallas en partikulärlösning.
+
+	% ---------------
+	% Anmärkning slut
+	% ---------------
+\end{theorem}
+
+
+\begin{theorem}
+	Om $\matr{A},\matr{B}$ inverterbara, så är även $\matr{A}^{-1},\matr{A}^\top,\matr{AB}$
+	inverterbara med inversenn:
+	\begin{enumerate}[(i)]
+		\item $(\matr{A}^{-1})^{-1}=\matr{A}$
+		\item $(\matr{A}^\top)^{-1}=(\matr{A}^{-1})^\top$
+		\item $(\matr{AB})^{-1}=\matr{B}^{-1}\matr{A}^{-1}$
+	\end{enumerate}
+
+	\begin{proof}
+		\hl{i \& ii övning}
+
+		$$
+			\matr{C}\matr{C}^{-1}=(\matr{A}\matr{B})(\matr{B}^{-1}\matr{A}^{-1})=\matr{A}\matr{E}\matr{A}^{-1}=\matr{A}\matr{A}^{-1}=\matr{E}
+		$$
+		$$
+			\matr{C}^{-1}\matr{C}=(\matr{B}^{-1}\matr{A}^{-1})(\matr{A}\matr{B})=\matr{B}^{-1}\matr{E}\matr{B}=\matr{B}^{-1}\matr{B}=\matr{E}
+		$$
+	\end{proof}
+\end{theorem}
+
+% --------------------------
+% Inverser & ekvationssystem
+% --------------------------
+
+Låt $\matr{A}=\qty(\begin{matrix}
+	\vdots&\vdots&&\vdots\\
+	\vec{a}_1&\vec{a}_2&\dots&\vec{a}_n\\
+	\vdots&\vdots&&\vdots
+\end{matrix})$ typ $m\times n$
+
+\begin{lemma}
+	$\matr{A}$ har en vänsterinvers $\iff\matr{A}\vec{x}=\vec{0}$ har endast lösningen
+	$\vec{x}=\vec{0}$.
+
+	\begin{proof}
+		($\implies$) Antag $\matr{V}\matr{A}=\matr{E}$. Då $\matr{A}\vec{x}=\vec{0}\implies
+		\matr{V}\matr{A}\vec{x}=\matr{V}\vec{0}\iff\matr{E}\vec{x}=\vec{0}\implies\vec{x}=\vec{0}$.
+
+		($\impliedby$ idé) Antag $\matr{A}\vec{x}=\vec{0}\implies\vec{x}=\vec{0}$
+		
+		$\vec{a}_1,\dots,\vec{a}_n$ linjärt oberoende. Då är det möjligt att hitta:
+		\begin{align*}
+			&(\vec{b}_1\perp\vec{a}_2,\dots,\vec{a}_n)\wedge(\vec{b}_1\cdot\vec{a}_1=1)\\
+			&(\vec{b}_2\perp\vec{a}_1,\vec{a}_3,\dots,\vec{a}_n)\wedge(\vec{b}_2\cdot\vec{a}_2=1)\\
+			&\,\vdots
+		\end{align*}
+	
+		Låt $\matr{V}=\qty(\begin{matrix}
+			\,\cdots&\vec{b}_1^\top&\cdots\,\\
+			\,\cdots&\vec{b}_2^\top&\cdots\,\\
+			&\vdots&\\
+			\,\cdots&\vec{b}_n^\top&\cdots\,\\
+		\end{matrix})$ typ $n\times m$
+
+		Då $\matr{V}\matr{A}=\qty(\begin{matrix}
+			\,\cdots&\vec{b}_1^\top&\cdots\,\\
+			\,\cdots&\vec{b}_2^\top&\cdots\,\\
+			&\vdots&\\
+			\,\cdots&\vec{b}_n^\top&\cdots\,\\
+		\end{matrix})\qty(\begin{matrix}
+			\vdots&\vdots&&\vdots\\
+			\vec{a}_1&\vec{a}_2&\dots&\vec{a}_n\\
+			\vdots&\vdots&&\vdots
+		\end{matrix})=\qty(\begin{matrix}
+			\vec{a}_1\cdot\vec{b}_1&\vec{a}_2\cdot\vec{b}_1&\dots&\vec{a}_n\cdot\vec{b}_1\\
+			\vec{a}_1\cdot\vec{b}_2&\vec{a}_2\cdot\vec{b}_2&\dots&\vec{a}_n\cdot\vec{b}_2\\
+			\vdots&\vdots&&\vdots\\
+			\vec{a}_1\cdot\vec{b}_n&\vec{a}_2\cdot\vec{b}_n&\dots&\vec{a}_n\cdot\vec{b}_n\\
+		\end{matrix})$
+	\end{proof}
+\end{lemma}
+
+\begin{corollary}
+	$\matr{A}$ har vänsterinvers $\iff\matr{A}\vec{x}=\vec{b}$ har högst en lösning.
+
+	\begin{proof}
+		($\implies$) Antag att $\matr{A}$ har vänsterinvers. Antag sedan att
+		$\matr{A}\vec{x}=\vec{b}$ och $\matr{A}\tilde{\vec{x}}=\vec{b}$.
+
+		Då gäller att
+		\begin{align*}
+			\matr{A}\vec{x}-\matr{A}\tilde{x}=\vec{b}-\vec{b}=\vec{0}
+			\iff&\matr{A}(\vec{x}-\tilde{x})=\vec{0}\\
+			\stackrel{\text{Föregående lemma}}{\implies}&\vec{x}-\tilde{x}=\vec{0}\\
+			\iff&\vec{x}=\vec{x}
+		\end{align*}
+
+		($\impliedby$) Antag $\matr{A}\vec{x}=\vec{b}$ har högst en lösning.
+		$\vec{b}=\vec{0}$ ger $\matr{A}\vec{x}=\vec{0}$ har högst en lösning $\iff\matr{A}\vec{x}=\vec{0}$
+		har endast lösningen $\vec{x}=\vec{0}\stackrel{\text{Föregående lemma}}{\iff}\matr{A}$
+		har en vänster invers.
+	\end{proof}
+\end{corollary}

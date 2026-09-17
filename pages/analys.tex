@@ -2,6 +2,7 @@
 
 \subsection{Gränsvärden}
 
+\subsubsection{\texorpdfstring{$\epsilon$-$\delta$}{Epsilon-Delta}}
 $$
 	\forall\epsilon>0\exists\delta>0\SA0<\qty|x-a|<\delta\implies\qty|f(x)-L|<\epsilon
 $$
@@ -11,7 +12,7 @@ $$
 $$
 
 \begin{ber}
-	\textbf{Exempel på bevis med $\epsilon$-$\delta$:}
+	\textbf{Exempel 1 på bevis med $\epsilon$-$\delta$:}
 
 	Vi vill visa att
 	$$
@@ -23,9 +24,225 @@ $$
 		0<\qty|x-0|=\qty|x|<\delta\implies\qty|\frac{x}{x}-1|\stackrel{x\neq0}{=}\qty|1-1|=0<\epsilon.
 	$$
 	Vi kan därmed för alla godtyckliga $\epsilon>0$ vilket $\delta=c\in\mathbb{R}^+$ som helst,
-	exempelvis $\delta=1$ som uppfyller $\epsilon$-$\delta$ definitionen. Altså
+	exempelvis $\delta=1$ som uppfyller $\epsilon$-$\delta$-definitionen. Altså
 	följer det att:
 	$$
 		\lim_{x\to0}\frac{x}{x}=1.
-	$$
+	$$\qed
 \end{ber}
+
+\begin{ber}
+	\textbf{Exempel 2 på bevis med $\epsilon$-$\delta$:}
+
+	Vi vill visa att
+	$$
+		\lim_{x\to0}\frac{\sin x}{x}=1.
+	$$
+
+	Enligt definition av $\epsilon$-$\delta$-bevis ska vi visa att $\forall\epsilon>0\exists\delta>0$ s.a.:
+	$$
+		0<\qty|x-0|=\qty|x|<\delta\implies\qty|\frac{\sin x}{x}-1|<\epsilon
+	$$
+	Vi vet att:
+	\begin{align*}
+		&\cos x\leq\frac{\sin x}{x}\leq 1\\
+		\implies&0\leq1-\frac{\sin x}{x}=\qty|\frac{\sin x}{x}-1|\leq1-\cos x<\epsilon
+	\end{align*}
+	Vi vet dessutom att:
+	$$
+		1-\cos x\leq\frac{x^2}{2},
+	$$
+	och altså får vi:
+	$$
+		\qty|\frac{\sin x}{x}-1|\leq1-\cos x\leq\frac{x^2}{2}<\epsilon.
+	$$
+	Därför, för att guarantera $\qty|\frac{\sin x}{x}-1|<\epsilon$, räcker det att
+	guarantera $\frac{x^2}{2}<\epsilon$. Ett värde $|x|<\delta\implies x^2<\delta^2$.
+	Därför kan vi välja
+	$$
+		\frac{\delta^2}{2}=\epsilon\implies\delta=\sqrt{2\epsilon}.
+	$$
+	Då gäller:
+	$$
+		|x|<\delta\implies x^2<\delta^2=2\epsilon
+	$$
+	vilket ger
+	$$
+		\qty|\frac{\sin x}{x}-1|\leq\frac{x^2}{2}<\frac{2\epsilon}{2}=\epsilon
+	$$
+	Alltså uppfylls $\epsilon$-$\delta$-definitionen och således:
+	$$
+		\lim_{x\to0}\frac{\sin x}{x}=1
+	$$\qed
+\end{ber}
+
+\subsubsection{\texorpdfstring{$\epsilon$-$\delta$}{Epsilon-Delta} vid oändligheten}
+$$
+	\forall\epsilon>0\exists\Delta\in\mathbb{R}\SA\qty|f(x)-A|<\epsilon\forall x>\Delta
+$$
+definerar
+$$
+	\lim_{x\to\infty}f(x)=A
+$$
+
+% --------------
+% Mer viktig del
+% --------------
+
+\subsubsection{Räkneregler för gränsvärden}
+
+\paragraph{Sammansättning}
+\begin{theorem}
+	Om $\lim g(x)=a$ och $\lim_{y\to a}f(x)=A\in\mathbb{R}\cup\qty{\pm\infty}$ så är:
+	$$
+		\lim (f\circ g)(x)=A
+	$$
+
+	\begin{proof}
+		Kom ihåg $\lim_{y\to a} f(y)=A$ om $\forall\epsilon>0\exists\delta>0\SA0<\qty|x-a|<\delta\implies\qty|f(y)-A|<\epsilon$.
+
+		Antag $\lim_{x\to\infty} g(x)=a\implies\forall\rho>0\exists C\in\mathbb{R}$ s.a.:
+		$$
+			\qty|g(x)-a|<\rho\forall x\geq C\quad\text{(def.)}
+		$$
+		\hl{(Slutsats)} Om $x\geq C\implies\qty|g(x)-a|<\rho$, då:
+		$$
+			\qty|(f\circ g)(x)-A|<\epsilon
+		$$
+		så satsen följer av definitionen.
+
+		\hl{Potentielt problem:} om $g$ lägger sig precis vid $a$. reparera satsen
+	\end{proof}
+\end{theorem}
+
+% -----------------------
+% Slut av über viktig del
+% -----------------------
+
+\subsubsection{Standardgränsvärden}
+
+\paragraph{Standardgränsvärde \#1}
+
+\paragraph{Standardgränsvärde \#2}
+Låt $a>1$ och $\alpha>0$. Då gäller att:
+$$
+	\lim_{x\to\infty}\frac{x^\alpha}{a^x}=0\quad\qty(\iff\lim_{x\to\infty}\frac{a^x}{x^\alpha}=\infty)
+$$
+\begin{proof}
+	Låt först $\alpha=1,a=1+p$ där $p>0$. Låt sedan $n=\lfloor x\rfloor$ så att
+	$$
+		a^x=(1+p)^x\geq(1+p)^n,\quad x\leq n+1.
+	$$
+	Vi får att:
+	$$
+		\frac{a^x}{x}\geq\frac{(1+p)^n}{n+1}
+	$$
+	Vi applicerar binomial-satsen \eqref{null}:
+	\begin{align*}
+		\frac{a^x}{x}&\geq\frac{(1+p)^n}{n+1}\\
+		&=\frac{1+{n\choose 1}p+{n\choose 2}p^2+\cdots}{n+1}\\
+		&>\frac{{n\choose 2}p^2}{n+1}\\
+		&=\frac{\qty(\frac{n(n-1)}{2})p^2}{n+1}\\
+		&=\frac{(n-1)p^2}{2(1+\frac{1}{n})}\\
+		&\stackrel{\text{Inte riktigt...}}{\cdots\cdots\cdots\longrightarrow}\frac{\infty}{2}
+	\end{align*}
+	Betrakta nu godtyckligt $\alpha>0$. Vi har:
+	$$
+		\frac{\alpha^x}{x^a}=\qty(\frac{(a^\frac{1}{\alpha})^x}{x})^\alpha=\qty(\frac{b^x}{x})^\alpha
+	$$
+	där $b=a^\frac{1}{a}>1$ och $\frac{b^x}{x}\to\infty$ då $x\to\infty$ (från ovanstående del).
+	Således
+	$$
+		\frac{a^x}{x^\alpha}=\qty(\frac{b^x}{x})^\alpha\underset{x\to\infty}{\cdots\longrightarrow}\infty
+	$$
+	\hl{Skriv om senare}
+	\begin{itemize}
+		\item Vi använde t. ex. gränsvärde för talföljd.
+		\item Vi reduerade $\alpha>0$ till $\alpha>1$.
+		\item Vi säger $\lim_{x\to\infty}f(x)=\infty$ om
+		$\forall c\in\mathbb{R}\exists\Delta\in\mathbb{R}\SA f(x)\geq C\forall x\geq\Delta$
+		\hl{Sätt detta ovan vid andra gränsvärdesdefinitioner}
+		\item Detta innebär då att exponential funktioner växer mycket större än polynom
+	\end{itemize}
+\end{proof}
+
+\paragraph{Standardgränsvärde \#3}
+Låt $a>1$ och $\alpha>0$. Då gäller att:
+$$
+	\lim_{x\to\infty}\frac{x^\alpha}{\log_ax}\quad\qty(\iff\lim_{x\to\infty}\frac{\log_ax}{x^\alpha}=0).
+$$
+
+\begin{proof}
+	Låt $y=\log_ax\iff x=a^y$. Vi har att om $x\to\infty$ så $y\to\infty$ och att:
+	$$
+		\frac{\log_ax}{x^\alpha}=\frac{y}{a^{\alpha y}}=\frac{y}{(a^\alpha)^y}\underset{y\to\infty}{\cdots\longrightarrow}0
+	$$
+	\hl{(Enligt föregående sats)}
+
+	Vi ser att:
+	$$
+		\lim_{x\to\infty}\frac{\log_ax}{x^\alpha}=0.
+	$$
+\end{proof}
+
+\paragraph{Standardgränsvärde \#4}
+Låt $\alpha>0$. Vi har att:
+$$
+	\lim_{x\to0^+}x^\alpha\ln x=0
+$$
+
+\begin{proof}
+	Låt $t=\frac{1}{x}\underset{x\to0^+}{\cdots\longrightarrow}\infty$ så att:
+	$$
+		x^\alpha\ln x=\frac{1}{t^\alpha}\ln\frac{1}{t}=\frac{\ln t}{t^\alpha}\underset{t\to\infty}{\cdots\longrightarrow}0
+	$$
+	enligt föregående sats.
+\end{proof}
+
+\begin{ber}
+	\paragraph{tal 1}
+
+	$$
+		\lim_{x\to0}\frac{\sin x^2}{(2x)^2}
+	$$
+	\begin{proof}
+		Låt $y=x^2$ så att $y\to0$ då $x\to0$. Vi får:
+		\begin{align*}
+			\lim_{x\to0}\frac{\sin x^2}{(2x)^2}
+			&=\lim_{y\to\infty}\frac{\sin y}{4y}\\
+			&=\frac{1}{4}\lim_{y\to0}\frac{\sin y}{y}\overset{\text{sgv}}{=}\frac{1}{4}\cdot1=\frac{1}{4}
+		\end{align*}
+	\end{proof}
+\end{ber}
+
+\begin{ber}
+	\paragraph{tal 2}
+
+	$$
+		\lim_{x\to\infty}\frac{x^2}{2x}
+	$$
+	\begin{proof}
+		sgv: $\lim_{x\to\infty}\frac{x^\alpha}{a^x}=0$ om $a>1$ och $\alpha>0$,
+		så satsen ger $\lim_{x\to\infty}\frac{x^2}{2^x}=0$.
+	\end{proof}
+\end{ber}
+
+\begin{ber}
+	\paragraph{tal 3}
+
+	$$
+		\lim_{x\to\infty}\frac{\ln(1+x)}{\sqrt{x}}
+	$$
+	\begin{proof}
+		Låt $y=1+x\to\infty$ då $x\to\infty$. Vi får:
+		\begin{align*}
+			\lim_{x\to\infty}\frac{\ln(1+x)}{\sqrt{x}}
+			&=\lim_{y\to\infty}\frac{\ln y}{\sqrt{y-1}}\\
+			&=\lim_{y\to\infty}\frac{\ln y}{\sqrt{y}}\frac{\sqrt{y}}{\sqrt{y-1}}\\
+			&\stackrel{\text{\hl{!?}}}{=}\lim_{y\to\infty}\frac{\ln y}{\sqrt{y}}\lim_{y\to\infty}\frac{\sqrt{y}}{\sqrt{y-1}}\\
+			&=0\cdot\lim_{y\to\infty}\sqrt{\frac{1}{1-\frac{1}{y}}}=0\cdot1=0.
+		\end{align*}
+	\end{proof}
+\end{ber}
+
+\hl{Inkludera referenser (altså till andra sektioner och inte källor) osv i denna sektion med}

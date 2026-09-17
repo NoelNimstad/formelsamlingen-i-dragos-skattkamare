@@ -1,11 +1,18 @@
 \usepackage[swedish]{babel}
 
+\usepackage{enumerate}
+
 \usepackage{hyperref} % Gör sektioner klickbara
 
 \usepackage{physics}
+\usepackage{marvosym}
 \usepackage{amsmath, amssymb, amsthm}
+\newtheorem{theorem}{Sats}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Korollarium}
 
-\usepackage[dvipsnames]{xcolor} % Anmärkningar
+\usepackage{soul} % Anmärkningar
+\usepackage[dvipsnames]{xcolor}
 \usepackage[most]{tcolorbox}
 \newtcolorbox{der}
 {
@@ -52,6 +59,8 @@
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
 % -- Komandon --
+\newcommand{\contra}{\text{\Lightning}}
+
 \newcommand{\SA}{\text{ s.a. }}
 
 \newcommand{\matr}[1]{\mathbf{#1}}
@@ -63,7 +72,7 @@
 \newcommand{\spn}{\operatorname{span}}
 \renewcommand{\ker}{\operatorname{Ker}}
 \newcommand{\noll}{\operatorname{Noll}}
-\newcommand{\koll}{\operatorname{Koll}}
+\newcommand{\kol}{\operatorname{Kolonn}}
 \newcommand{\nullity}{\operatorname{nullity}}
 \newcommand{\nolldim}{\operatorname{nolldim}}
 \newcommand{\rang}{\operatorname{rang}}
