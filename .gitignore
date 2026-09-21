@@ -15,3 +15,5 @@ pages/*
 !preamble.tex
 !pages/linalg.tex
 !pages/analys.tex
+!pages/tif.tex
+!pages/bevis.tex

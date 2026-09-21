@@ -4,12 +4,12 @@
 \input{preamble.tex}
 
 \begin{document}
+
 \pagecolor{Black}
 \color{white}
 
 \begin{titlepage}
     \begin{tikzpicture}[remember picture,overlay]
-
         % Titel
         \node[align=center] at ([yshift=-7cm]current page.north) {
             {\Huge Formelsamlingen i Dragos skattkamare}\\[0.5cm]
@@ -30,7 +30,10 @@
 
 \newpage
 
+
+\include{pages/bevis.tex}
 \include{pages/analys.tex}
 \include{pages/linalg.tex}
+% \include{pages/tif.tex}
 
 \end{document}

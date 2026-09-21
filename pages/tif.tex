@@ -1,0 +1,106 @@
+\section{Fysikingenjörens verktyg}
+
+\subsection{Fel, mätosäkerhet}
+
+\subsubsection{Noggranhet och precision}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=10cm]{res/acc_vs_pres.jpg}
+\end{figure}
+Precision innebär att mät
+
+\subsubsection{Felkällor och klassificering av fel}
+Två sätt att klasisificera felkällor är enligt grova fel och systematiska fel.
+Dessa innebär:
+\begin{itemize}
+	\item Grova fel \begin{itemize}
+		\item Felaktigt handhavande
+		\item Slarv
+		\item Räknefel
+	\end{itemize}
+	\item Systematiska fel \begin{itemize}
+		\item Instrumentfel
+		\item Avläsning
+		\item Yttre faktorer
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Mätseries, medelvärden och spridningsmått}
+Standardavvikelsen $\sigma$ är en kvantifisering av spridningsmåttet, och ges av
+variansen:
+$$
+	\sigma^2=\frac{1}{n}\sum_{i=1}^n(x_i-\bar{x})^2
+$$
+Ett bra mått på mätnoggrannheten är standardavvikelsen i medelvärdet som ges av:
+\begin{align*}
+	\sigma_m&=\frac{1}{\sqrt{n(n-1)}}\sqrt{\sum_{i=1}^{n}(x_i-\bar{x})^2}\\
+	&=\frac{1}{\sqrt{n(n-1)}}\sqrt{n\sigma^2}\\
+	&=\sqrt{\frac{n\sigma^2}{n(n-1)}}\\
+	&=\frac{\sigma}{\sqrt{n-1}}
+\end{align*}
+
+När man skriver en raport är det viktigt att berätta:
+\begin{itemize}
+	\item Metoden för beräkningen av felet onoggranhet
+	\item \hl{Något mer}
+\end{itemize}
+
+\newpage
+
+\subsubsection{Felfortplantning}
+Felfortplantning är en teknik som behövs för att ange mätosäkerhet för storhet som
+ej mäts direkt, utan fås genom funktionssamband. Vi vill få reda på storhet $y$
+vilket beror på $x$ genom sambandet $y=f(x)$. Mätning ger $x=x_0\pm\Delta x$.
+
+För att skatta $\Delta y$. Genom att linjarisera $f(x)$ kring $x$ får vi:
+\begin{align*}
+	y&=f(x_0\pm\Delta x)=f(x_0)\pm\qty|\dv{f}{x}|_{x_0}\Delta x\\
+	&=y_0\pm\Delta y\\
+	\implies y&\left\{\begin{matrix}
+		y_0=f(x_0)\\
+		\Delta y=\left|f'(x_0)\right|\Delta x
+	\end{matrix}\right.
+\end{align*}
+
+Om vi å andra sidan har ett samband av flera variabler, t.ex. $y$ beror på $n$
+oberoende variabler $y=f(x_1,x_2,\dots,x_n)$. Vi har då:
+\begin{align*}
+	x_1&=x_{10}\pm\Delta x_1\\
+	x_2&=x_{20}\pm\Delta x_2\\
+	&\qquad\vdots\\
+	x_n&=x_{n0}\pm\Delta x_n
+\end{align*}
+Detta ger att:
+$$
+	y=f(x_{10},x_{20},\dots,x_{n0})\pm\sum_{k=1}^{n}\qty|\pdv{f}{x_k}|\Delta x_k
+$$
+
+\begin{ber}
+	\textbf{Exempel på beräkning enligt felfortplantningsformeln}
+
+	För en matematisk pendel gäller det för pendeltiden att:
+	\begin{align*}
+		T&=2\pi\sqrt{\frac{l}{g}}\\
+		\implies T^2&=4\pi^2\frac{l}{g}\iff g=\frac{4\pi^2l}{T^2}
+	\end{align*}
+	Mätning ger:
+	\begin{align*}
+		l&=l_0\pm\Delta l\\
+		T&=T_0\pm\Delta T
+	\end{align*}
+	Felfortplaningsformeln ger:
+	\begin{align*}
+		g(l,T)&\approx g(l_0,T_0)\pm\qty(\qty|\pdv{g}{l}|_{(l_0,T_0)}\Delta l+\qty|\pdv{g}{T}|_{(l_0,T_0)}\Delta T)\\
+		&=g_0\pm\qty(\frac{4\pi^2}{T_0^2}\Delta l+\frac{8\pi^2l_0}{T_0^3}\Delta T)\\
+		&=g_0\pm\qty(\frac{g_0}{l_0}\Delta l+\frac{2g_0}{T_0}\Delta T)\\
+		\implies\Delta g&=g\qty(\frac{\Delta l}{l_0}+\frac{2\Delta T}{T_0})
+	\end{align*}
+	Relativ onoggranhet: $g$
+\end{ber}
+
+\subsection{Laminärt flöde}
+\begin{itemize}
+	\item Laminärt flöde innebär att strömlinjer ej korsar varandra.
+	\item Turbulent flöde innebär motsatsen till laminärt flöde.
+\end{itemize}
+Laminärt flöde fås för bred långsamtflytande fluid.

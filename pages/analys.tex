@@ -2,9 +2,9 @@
 
 \subsection{Gränsvärden}
 
-\subsubsection{\texorpdfstring{$\epsilon$-$\delta$}{Epsilon-Delta}}
+\subsubsection{\texorpdfstring{$\eps$-$\delta$}{Epsilon-Delta}}
 $$
-	\forall\epsilon>0\exists\delta>0\SA0<\qty|x-a|<\delta\implies\qty|f(x)-L|<\epsilon
+	\forall\eps>0\exists\delta>0\SA0<\qty|x-a|<\delta\implies\qty|f(x)-L|<\eps
 $$
 definerar
 $$
@@ -12,20 +12,20 @@ $$
 $$
 
 \begin{ber}
-	\textbf{Exempel 1 på bevis med $\epsilon$-$\delta$:}
+	\textbf{Exempel 1 på bevis med $\eps$-$\delta$:}
 
 	Vi vill visa att
 	$$
 		\lim_{x\to0}\frac{\sin x}{x}=1.
 	$$
-	Enligt definition av $\epsilon$-$\delta$-bevis ska vi visa att $\forall\epsilon>0\exists\delta>0$ s.a.:
+	Enligt definition av $\eps$-$\delta$-bevis ska vi visa att $\forall\eps>0\exists\delta>0$ s.a.:
 	$$
-		0<\qty|x-0|=\qty|x|<\delta\implies\qty|\frac{\sin x}{x}-1|<\epsilon
+		0<\qty|x-0|=\qty|x|<\delta\implies\qty|\frac{\sin x}{x}-1|<\eps
 	$$
 	Vi vet att:
 	\begin{align*}
 		&\cos x\leq\frac{\sin x}{x}\leq 1\\
-		\implies&0\leq1-\frac{\sin x}{x}=\qty|\frac{\sin x}{x}-1|\leq1-\cos x<\epsilon
+		\implies&0\leq1-\frac{\sin x}{x}=\qty|\frac{\sin x}{x}-1|\leq1-\cos x<\eps
 	\end{align*}
 	Vi vet dessutom att:
 	$$
@@ -33,51 +33,51 @@ $$
 	$$
 	och altså får vi:
 	$$
-		\qty|\frac{\sin x}{x}-1|\leq1-\cos x\leq\frac{x^2}{2}<\epsilon.
+		\qty|\frac{\sin x}{x}-1|\leq1-\cos x\leq\frac{x^2}{2}<\eps.
 	$$
-	Därför, för att guarantera $\qty|\frac{\sin x}{x}-1|<\epsilon$, räcker det att
-	guarantera $\frac{x^2}{2}<\epsilon$. Ett värde $|x|<\delta\implies x^2<\delta^2$.
+	Därför, för att guarantera $\qty|\frac{\sin x}{x}-1|<\eps$, räcker det att
+	guarantera $\frac{x^2}{2}<\eps$. Ett värde $|x|<\delta\implies x^2<\delta^2$.
 	Därför kan vi välja
 	$$
-		\frac{\delta^2}{2}=\epsilon\implies\delta=\sqrt{2\epsilon}.
+		\frac{\delta^2}{2}=\eps\implies\delta=\sqrt{2\eps}.
 	$$
 	Då gäller:
 	$$
-		|x|<\delta\implies x^2<\delta^2=2\epsilon
+		|x|<\delta\implies x^2<\delta^2=2\eps
 	$$
 	vilket ger
 	$$
-		\qty|\frac{\sin x}{x}-1|\leq\frac{x^2}{2}<\frac{2\epsilon}{2}=\epsilon
+		\qty|\frac{\sin x}{x}-1|\leq\frac{x^2}{2}<\frac{2\eps}{2}=\eps
 	$$
-	Alltså uppfylls $\epsilon$-$\delta$-definitionen och således:
+	Alltså uppfylls $\eps$-$\delta$-definitionen och således:
 	$$
 		\lim_{x\to0}\frac{\sin x}{x}=1
 	$$\qed
 \end{ber}
 
 \begin{ber}
-	\textbf{Exempel 2 på bevis med $\epsilon$-$\delta$:}
+	\textbf{Exempel 2 på bevis med $\eps$-$\delta$:}
 
 	Vi vill visa att
 	$$
 		\lim_{x\to0}f(x)=1.
 	$$
 
-	Enligt definitionen av $\epsilon$-$\delta$-bevis ska vi visa att $\forall\epsilon>0\exists\delta>0$ s.a.:
+	Enligt definitionen av $\eps$-$\delta$-bevis ska vi visa att $\forall\eps>0\exists\delta>0$ s.a.:
 	$$
-		0<\qty|x-0|=\qty|x|<\delta\implies\qty|\frac{x}{x}-1|\stackrel{x\neq0}{=}\qty|1-1|=0<\epsilon.
+		0<\qty|x-0|=\qty|x|<\delta\implies\qty|\frac{x}{x}-1|\stackrel{x\neq0}{=}\qty|1-1|=0<\eps.
 	$$
-	Vi kan därmed för alla godtyckliga $\epsilon>0$ vilket $\delta=c\in\mathbb{R}^+$ som helst,
-	exempelvis $\delta=1$ som uppfyller $\epsilon$-$\delta$-definitionen. Altså
+	Vi kan därmed för alla godtyckliga $\eps>0$ vilket $\delta=c\in\mathbb{R}^+$ som helst,
+	exempelvis $\delta=1$ som uppfyller $\eps$-$\delta$-definitionen. Altså
 	följer det att:
 	$$
 		\lim_{x\to0}\frac{x}{x}=1.
 	$$\qed
 \end{ber}
 
-\subsubsection{\texorpdfstring{$\epsilon$-$\delta$}{Epsilon-Delta} vid oändligheten}
+\subsubsection{\texorpdfstring{$\eps$-$\delta$}{Epsilon-Delta} vid oändligheten}
 $$
-	\forall\epsilon>0\exists\Delta\in\mathbb{R}\SA\qty|f(x)-A|<\epsilon\forall x>\Delta
+	\forall\eps>0\exists\Delta\in\mathbb{R}\SA\qty|f(x)-A|<\eps\forall x>\Delta
 $$
 definerar
 $$
@@ -98,7 +98,7 @@ $$
 	$$
 
 	\begin{proof}
-		Kom ihåg $\lim_{y\to a} f(y)=A$ om $\forall\epsilon>0\exists\delta>0\SA0<\qty|x-a|<\delta\implies\qty|f(y)-A|<\epsilon$.
+		Kom ihåg $\lim_{y\to a} f(y)=A$ om $\forall\eps>0\exists\delta>0\SA0<\qty|x-a|<\delta\implies\qty|f(y)-A|<\eps$.
 
 		Antag $\lim_{x\to\infty} g(x)=a\implies\forall\rho>0\exists C\in\mathbb{R}$ s.a.:
 		$$
@@ -106,7 +106,7 @@ $$
 		$$
 		\hl{(Slutsats)} Om $x\geq C\implies\qty|g(x)-a|<\rho$, då:
 		$$
-			\qty|(f\circ g)(x)-A|<\epsilon
+			\qty|(f\circ g)(x)-A|<\eps
 		$$
 		så satsen följer av definitionen.
 

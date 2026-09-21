@@ -462,7 +462,7 @@ kolonnrum och nollrum med dess totala antal kolonner.
 
 Om $\matr{A}\in\mathbb{R}^{m\times n}$ (altså med $n$ kolonner) så gäller:
 $$
-	\dim(\kol\matr{A}) + \nullity(\matr{A})=n
+	\rang(\matr{A})+\nullity(\matr{A})=n
 $$
 
 \begin{features}
@@ -613,7 +613,7 @@ $\matr{A}^{-1}$ kallas då för \emph{inversen} till $\matr{A}$.
 	\begin{itemize}
 		\item $\matr{E}=\matr{E}^{-1}$
 		\item $\matr{A}$ typ $m\times n\implies\matr{V},\matr{H},\matr{A}^{-1}$ typ $n\times m$
-		\item $\nexists!\matr{V},\matr{H}\forall\matr{A}$
+		\item Det finns inte nödvändigtvis entydliga $\matr{V},\matr{H}\forall\matr{A}$
 	\end{itemize}
 \end{features}
 
@@ -659,7 +659,7 @@ Vad har $\matr{A}\vec{x}=\vec{b}$ för lösningar?
 		0&0&0&0&0
 	\end{amatrix}
 	\iff\left\{\begin{matrix}
-		x_1+x_2=0\\x_3=-1\\x_2,x_4\text{ är fria}
+		x_1=2-x_2\\x_3=-1\\x_2,x_4\text{ är fria}
 	\end{matrix}\right.
 \end{align*}
 

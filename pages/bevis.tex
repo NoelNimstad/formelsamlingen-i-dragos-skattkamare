@@ -1,0 +1,223 @@
+\section{Bevisindex}
+
+\subsection{Inledande matematisk analys}
+
+\subsubsection{Faktorsatsen för polynom}
+\begin{theorem}[Faktorsatsen för polynom]
+	$(x-a)$ är en faktor till polynomet $p\iff p(a)=0$.
+
+	\begin{proof}
+		Med polynomdivision av $p$ genom $(x-a)$ kan vi skriva $p(x)$ som:
+		$$
+			p(x)=(x-a)q(x)+r(x)
+		$$
+		där det gäller att $\pgrad r<\pgrad (x-a)=1\implies r$ är en konstant.
+		Eftersom $a$ är ett nollställe till $p$, så vet vi att:
+		\begin{align*}
+			0&=p(a)=(a-a)q(a)+r\\
+			&=r
+		\end{align*}
+		Därmed kan $p$ skrivas enligt:
+		$$
+			p(x)=(x-a)q(x)
+		$$
+		omm $a$ är ett nollställe till $p$.
+	\end{proof}
+\end{theorem}
+
+\subsubsection{Eventuella rationella nollställen till polynom}
+\begin{theorem}[Eventuella rationella nollställen till polynom]
+	Satsen ger en begräning till lösningarna av polynom ekvationen $\sum_{k=0}^{n}c_kx^k=0$,
+	där $c_k\in\mathbb{Z}$ och $c_0,c_n\neq0$. Alla lösningar $r=\frac{a}{b}\in\mathbb{Q}$
+	där $\gcd(a,b)=1$ uppfyller:
+	\begin{itemize}
+		\item $\gcd(a,a_0)\neq1$
+		\item $\gcd(b,a_n)\neq1$
+	\end{itemize}
+
+	\begin{proof}
+		Låt $p:x\mapsto\sum_{k=0}^{n}c_kx^k=0$, där $c_k\in\mathbb{Z}$ och $c_0,c_n\neq0$.
+		Antag $p(\frac{a}{b})=0$ för något par $a,b\in\mathbb{Z}$, där $\gcd(a,b)=1$.
+		Detta ger:
+		$$
+			p\qty(\frac{a}{b})=\sum_{k=0}^{n}a_k\qty(\frac{a}{b})^k=0
+		$$
+		Genom multiplikation med $q^n$, ges:
+		\begin{align*}
+			b^np\qty(\frac{a}{b})=c_na^n+c_{n-1}a^{n-1}b+\dots+c_0b^n&=0\\
+			\implies a(c_na^{n-1}+c_{n-1}a^{n-2}b+\dots+c_1b^{n-1})&=-c_0b^n
+		\end{align*}
+		Eftersom $c_0,b\in\mathbb{Z}$, så gäller det att $c_0b^k\equiv 0\mod a$,
+		men då $a$ och $b$ är koprima tal (vilket innebär $\gcd(a,b^n)=1$), så måste
+		det vara att $c_0\equiv 0\mod a$. Liknande, fast för $b$, gäller:
+		\begin{align*}
+			b^np\qty(\frac{a}{b})=c_na^n+c_{n-1}a^{n-1}b+\dots+c_0b^n&=0\\
+			\implies b(c_{n-1}a^{n-1}+c_{n-2}a^{n-2}b+\dots+c_0b^{n-1})&=-c_na^n\\
+			\therefore c_n&\equiv 0\mod b
+		\end{align*}
+	\end{proof}
+\end{theorem}
+
+\subsubsection{Binomialsatsen}
+\begin{theorem}[Binomialsatsen]
+	Låt $x,y\in\mathbb{R}$ vara sådan att $x+y\neq0$. $\forall n\in\mathbb{N}$
+	gäller det att:
+	$$
+		(x+y)^n=\sum_{k=0}^{n}{n\choose k}x^{n-k}y^k 
+	$$
+
+	\begin{proof}
+		Låt $x$ och $y$ vara godtyckliga tal enligt ovan. Eftersom
+		$$
+			(x+y)^n=\qty(y\qty(\frac{x}{y}+1))^n=y^n\qty(1+\frac{x}{y})^n
+		$$
+		så räcker det att bevisa satsen med $y=1$ u.f.a. (utan att förlora i
+		allmängiltighet). Satsen bevisas genom induktion. Låt $p$ vara utsagan
+		$$
+			p_n:(1+x)^n=\sum_{k=0}^{n}{n\choose k}1^{n-k}x^k=\sum_{k=0}^n{n\choose k}x^k
+		$$
+		För $n=1$, gäller det:
+		$$
+			p_1:(1+x)^1=1+x={1\choose 0}1^{1}x^0+{1\choose 1}1^0x^1\quad\checkmark
+		$$
+		Antag sedan för något fixed $m\in\mathbb{N}\cap[2,\infty)$ att $p_m$ är
+		sant. Då, för $p_{m+1}$, gäller:
+		\begin{align*}
+			(1+x)^{m+1}&=(1+x)(1+x)^m\\
+			&\stackrel{p_m}{=}(1+x)\sum_{k=0}^{m}{m\choose k}x^k\\
+			&=\sum_{k=0}^{m}{m\choose k}x^k+\sum_{k=0}^{m}{m\choose k}x^{k+1}\\
+			&=1+\sum_{k=1}^{m}{m\choose k}x^k+\sum_{k=1}^m{m\choose k-1}x^k+x^{m+1}\\
+			&=1+\qty(\sum_{k=1}^{m}\qty[{m\choose k}+{m\choose k-1}]x^k)+x^{m+1}\\
+			&={m+1\choose 0}x^0+\qty(\sum_{k=1}^{m}{m+1\choose k}x^k)+{m+1\choose m+1}x^{m+1}\\
+			&=\sum_{k=0}^{m+1}{m+1\choose k}x^k
+		\end{align*}
+		Därmed, eftersom $p_0=\top$, och $p_m\implies p_{m+1}$, för något fixed
+		$m\in\mathbb{N}$, så följer det av induktionsaxiomet att $p_n$ är sant
+		$\forall n\in\mathbb{N}$.
+	\end{proof}
+\end{theorem}
+
+\subsubsection{Ett standardgränsvärde}
+\begin{theorem}[Ett standardgränsvärde]
+	
+\end{theorem}
+
+\subsubsection{Addition av gränsvärden}
+\begin{theorem}[Addition av gränsvärden]\label{sats:add-g-v.}
+	Om $\lim_{x\to a}f(x)=A$ och $\lim_{x\to a}g(x)=B$, så gäller det att:
+	$$
+		\lim_{x\to a}f(x)+g(x)=A+B
+	$$
+	
+	\begin{proof}
+		Vi vill visa att $\forall\eps>0\exists\delta>0$ s.a.
+		$$
+			0<\qty|x-a|<\delta\implies\qty|f(x)+g(x)-(A+B)|<\eps.
+		$$
+		Eftersom både $f$ och $g$:s gränsvärden existerar vid $a$, så kan vi välja
+		$\delta_1$ och $\delta_2$ för respektive funktioner, s.a.:
+		\begin{align*}
+			0<\qty|x-a|<\delta_1\implies&\qty|f(x)-A|<\eps_1\leteq\frac{\eps}{2}\\
+			0<\qty|x-a|<\delta_2\implies&\qty|g(x)-B|<\eps_2\leteq\frac{\eps}{2}
+		\end{align*}
+		Låt sedan $\delta=\min\qty{\delta_1,\delta_2}$\footnotemark. Då följer det
+		att:
+		\begin{align*}
+			0<\qty|x-a|<\delta\implies\qty|f(x)-A+g(x)-B|
+			&\leq\qty|f(x)-A|+\qty|g(x)-B|\\
+			&<\eps_1+\eps_2\\
+			&<\frac{\eps}{2}+\frac{\eps}{2}=\eps
+		\end{align*}
+		Altså följer det av definitionen av gränsvärden att:
+		$$
+			\lim_{x\to a}f(x)+g(x)=A+B
+		$$
+	\end{proof}
+
+	\footnotetext{För det gränsvärdet
+		med det kanoniskt större $\delta$-värde, gäller fortfarande följden då
+		$(a-\delta_m,a+\delta_m) \subset(a-\delta_M,a+\delta_M)$, där
+		$\delta_m\leteq\min\qty{\delta_1,\delta_2}$ och
+		$\delta_M\leteq\max\qty{\delta_1,\delta_2}$.}
+\end{theorem}
+
+\subsubsection{Multiplikation av gränsvärden}
+\begin{theorem}[Multiplikation av gränsvärden]
+	Om $\lim_{x\to a}f(x)=A$ och $\lim_{x\to a}g(x)=B$, så gäller det att:
+	$$
+		\lim_{x\to a}f(x)g(x)=AB
+	$$
+	
+	\begin{proof}
+		Låt $\eps>0$. Det existerar då $\delta_1,\delta_2>0$ s.a.:
+		\begin{align*}
+			0<\qty|x-a|<\delta_1\implies&\qty|f(x)-A|<\sqrt{\eps}\\
+			0<\qty|x-a|<\delta_2\implies&\qty|g(x)-B|<\sqrt{\eps}
+		\end{align*}
+		Definera sedan $\delta=\min\qty{\delta_1,\delta_2}$. $\forall0<\qty|x-a|<\delta$
+		får vi då:
+		\begin{align*}
+			\qty|(f(x)-A)(g(x)-B)-0|
+			&=\qty|f(x)-A|\qty|g(x)-B|\\
+			&<\sqrt{\eps}\sqrt{\eps}\\
+			&=\eps.
+		\end{align*}
+		Altså är
+		$$
+			\lim_{x\to a}(f(x)-A)(g(x)-B)=0.
+		$$
+		Vi distruberar multiplikationen:
+		\begin{align*}
+			(f(x)-A)(g(x)-B)&=f(x)g(x)-Ag(x)-Bf(x)+AB\\
+			\implies f(x)g(x)&=(f(x)-A)(g(x)-B)+Ag(x)+Bf(x)-AB.
+		\end{align*}
+		Genom att applicera Sats~\ref{sats:add-g-v.} kan vi bestäma:
+		\begin{align*}
+			\lim_{x\to a}f(x)g(x)&=\lim_{x\to a}\qty[(f(x)-A)(g(x)-B)+Ag(x)+Bf(x)-AB]\\
+			&=\lim_{x\to a}(f(x)-A)(g(x)-B)+\lim_{x\to a}Ag(x)+\lim_{x\to a}Bf(x)-\lim_{x\to a}AB\\
+			&=0+AB+BA-AB\\
+			&=AB
+		\end{align*}
+	\end{proof}
+\end{theorem}
+
+\subsubsection{Division av gränsvärden}
+\begin{theorem}[Division av gränsvärden]
+	Om $\lim_{x\to a}f(x)=A$ och $\lim_{x\to a}g(x)=B$, så gäller det att:
+	$$
+		\lim_{x\to a}\frac{f(x)}{g(x)}=\frac{A}{B}
+	$$
+	
+	\begin{proof}
+		Låt $\eps>0$. Eftersom $\lim_{x\to a}g(x)=B$ existerar det något $\delta_1>0$
+		s.a.:
+		$$
+			0<\qty|x-a|<\delta_1\implies\qty|g(x)-B|<\frac{\qty|B|}{2}
+		$$
+		Antagande $0<\qty|x-a|<\delta_1$ gäller det att:
+		\begin{align}
+			\notag\qty|B|
+			\notag&=\qty|B-g(x)+g(x)|\\
+			\notag&\leq\qty|B-g(x)|+\qty|g(x)|\\
+			\notag&=\qty|B-g(x)|+\qty|g(x)|\\
+			\notag&<\frac{\qty|B|}{2}+\qty|g(x)|\\
+			\notag\implies\frac{\qty|B|}{2}&<\qty|g(x)|\\
+			\label{eq:sats:div-g-v.:1}\implies\frac{1}{\qty|g(x)|}&<\frac{2}{\qty|L|}
+		\end{align}
+		Nu så finns det även ett $\delta_2>0$ s.a.:
+		\begin{equation}
+			\label{eq:sats:div-g-v.:2}0<\qty|x-a|<\delta_2\implies\qty|g(x)-B|<\frac{\qty|B|^2}{2}\eps
+		\end{equation}
+		Vi väljer sedan $\delta=\min\qty{\delta_1,\delta_2}$. Om $0<\qty|x-a|<\delta$
+		har vi:
+		\begin{align*}
+			\qty|\frac{1}{g(x)}-\frac{1}{B}|
+			&=\qty|\frac{B-g(x)}{Bg(x)}|\\
+			&=\frac{1}{\qty|Bg(x)|}\qty|B-g(x)|\\
+			&=\frac{1}{\qty|B|}\frac{1}{\qty|g(x)|}\qty|B-g(x)|\\
+			&\stackrel{\eqref{eq:sats:div-g-v.:1}}{<}\frac{1}{\qty|B|}\frac{2}{\qty|B|}\qty|B-g(x)|\\
+			&\stackrel{\eqref{eq:sats:div-g-v.:2}}{<}\frac{2}{\qty|L|^2}\frac{\qty|L|^2}{2}\eps\\
+			&=\eps
+		\end{align*}
+	\end{proof}
+\end{theorem}
