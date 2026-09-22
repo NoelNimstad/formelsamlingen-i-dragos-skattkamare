@@ -101,12 +101,14 @@
 	$}
 \end{theorem}
 
-\subsubsection{Ett standardgränsvärde}
+\subsubsection{Standardgränsvärden}
+
 \begin{theorem}[Ett standardgränsvärde]
 	
 \end{theorem}
 
-\subsubsection{Sammansättning av gränsvärden}
+\subsubsection{Gränsvärdesräkneregler}
+
 \begin{theorem}[Sammansättning av gränsvärden]\label{sats:sam-g-v.}
 	Om $\lim_{x\to B}f(x)=A$ och $\lim_{x\to a}g(x)=B$, så gäller det att:
 	$$
@@ -136,7 +138,6 @@
 	\end{proof}
 \end{theorem}
 
-\subsubsection{Addition av gränsvärden}
 \begin{theorem}[Addition av gränsvärden]\label{sats:add-g-v.}
 	Om $\lim_{x\to a}f(x)=A$ och $\lim_{x\to a}g(x)=B$, så gäller det att:
 	$$
@@ -175,7 +176,6 @@
 		$\delta_M\leteq\max\qty{\delta_1,\delta_2}$.}
 \end{theorem}
 
-\subsubsection{Multiplikation av gränsvärden}
 \begin{theorem}[Multiplikation av gränsvärden]\label{sats:mult-g-v.}
 	Om $\lim_{x\to a}f(x)=A$ och $\lim_{x\to a}g(x)=B$, så gäller det att:
 	$$
@@ -215,7 +215,6 @@
 	\end{proof}
 \end{theorem}
 
-\subsubsection{Division av gränsvärden}
 \begin{theorem}[Division av gränsvärden]
 	Om $\lim_{x\to a}f(x)=A$ och $\lim_{x\to a}g(x)=B$, så gäller det att:
 	$$
@@ -254,5 +253,49 @@
 			&=\eps
 		\end{align*}
 		Resten av satsen följer nu av Sats~\ref{sats:mult-g-v.}.
+	\end{proof}
+\end{theorem}
+
+\subsection{Linjär algebra}
+
+\subsubsection{Baser}
+
+\begin{theorem}
+	$\vec{e}_1,\dots,\vec{e}_n$ är en bas för $\mathbb{R}^n\iff\forall\vec{v}\in\mathbb{R}^n
+	\exists!v_1,\dots,v_n\in\mathbb{R}^n$ s.a.:
+	$$
+		\vec{v}=v_1\vec{e}_1+\dots+v_n\vec{e}_n
+	$$
+
+	\begin{proof}
+		Om $\vec{e}_1,\dots,\vec{e}_n$ är en bas för $\mathbb{R}^n$, så gäller det att:
+		\begin{align*}
+			&\spn(\vec{e}_1,\dots,\vec{e}_n)=\mathbb{R}^n\\
+			\iff&\forall\vec{v}\in\mathbb{R}^n\exists v_1,\dots,v_n\SA\vec{v}=v_1\vec{e}_1+\dots+v_n\vec{e}_n
+		\end{align*}.
+		Detta visar dess existens. Antag seadn att det finns två unika uppsättningar
+		av konstanter som beskriver $\vec{v}$ i basen:
+		\begin{align*}
+			\vec{v}&=v_1\vec{e}_1+\dots+v_n\vec{e}_n\\
+			\vec{v}&=v_1^*\vec{e}_1+\dots+v_n^*\vec{e}_n
+		\end{align*}
+		Betrakta sedan dess skillnad:
+		\begin{align*}
+			\vec{v}-\vec{v}=\vec{0}
+			&=(v_1\vec{e}_1+\dots+v_n\vec{e}_n)-(v_1^*\vec{e}_1+\dots+v_n^*\vec{e}_n)\\
+			&=(v_1-v_1^*)\vec{e}_1+\dots+(v_n-v_n^*)\vec{e}_n
+		\end{align*}
+		Per definition av att $\vec{e}_1,\dots,\vec{e}_n$ är en bas, så är de
+		linjärt oberoende. Detta innebär att den enda lösningen till ovanstående
+		ekvationen är den triviella lösningen då alla koefficienter är $0$. Altså:
+		\begin{align*}
+			v_1-v_1^*=0&\iff v_1=v_1^*\\
+			&\quad\,\,\vdots\\
+			v_n-v_n^*=0&\iff v_n=v_n^*\quad\contra
+		\end{align*}
+		Altså, $\forall\vec{v}\in\mathbb{R}^n\exists!v_1,\dots,v_n\in\mathbb{R}^n$ s.a.:
+		$$
+			\vec{v}=v_1\vec{e}_1+\dots+v_n\vec{e}_n
+		$$
 	\end{proof}
 \end{theorem}
