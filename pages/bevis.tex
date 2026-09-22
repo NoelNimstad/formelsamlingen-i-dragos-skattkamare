@@ -81,7 +81,7 @@
 			p_1:(1+x)^1=1+x={1\choose 0}1^{1}x^0+{1\choose 1}1^0x^1\quad\checkmark
 		$$
 		Antag sedan för något fixed $m\in\mathbb{N}\cap[2,\infty)$ att $p_m$ är
-		sant. Då, för $p_{m+1}$, gäller:
+		sant. Då, för $p_{m+1}$, gäller\footnotemark:
 		\begin{align*}
 			(1+x)^{m+1}&=(1+x)(1+x)^m\\
 			&\stackrel{p_m}{=}(1+x)\sum_{k=0}^{m}{m\choose k}x^k\\
@@ -95,11 +95,45 @@
 		$m\in\mathbb{N}$, så följer det av induktionsaxiomet att $p_n$ är sant
 		$\forall n\in\mathbb{N}$.
 	\end{proof}
+
+	\footnotetext{Notera $
+		\sum_{k=0}^{m}{m\choose k}x^{k+1}=\sum_{k=1}^{m+1}{m\choose k-1}x^{k}=\qty[\sum_{k=1}^{m}{m\choose k-1}x^{k}]+x^{m+1}
+	$}
 \end{theorem}
 
 \subsubsection{Ett standardgränsvärde}
 \begin{theorem}[Ett standardgränsvärde]
 	
+\end{theorem}
+
+\subsubsection{Sammansättning av gränsvärden}
+\begin{theorem}[Sammansättning av gränsvärden]\label{sats:sam-g-v.}
+	Om $\lim_{x\to B}f(x)=A$ och $\lim_{x\to a}g(x)=B$, så gäller det att:
+	$$
+		\lim_{x\to a}(f\circ g)(x)=A
+	$$
+	
+	\begin{proof}
+		Vi vill visa att $\forall\eps>0\exists\delta>0$ s.a.
+		$$
+			0<\qty|x-a|<\delta\implies\qty|(f\circ g)(x)-A|<\eps.
+		$$
+		Eftersom både $f$ och $g$:s gränsvärden existerar vid $a$, så kan vi välja
+		$\delta_1$ och $\delta_2$ för respektive funktioner, s.a.:
+		\begin{align*}
+			0<\qty|y-B|<\delta_1\implies&\qty|f(y)-A|<\eps\\
+			0<\qty|x-a|<\delta_2\implies&\qty|g(x)-B|<\delta_1.
+		\end{align*}
+    	Välj sedan $\delta=\delta_2$. Då gäller att om $0<|x-a|<\delta$, så är
+		$0<|g(x)-B|<\delta_1$ vilket innebär $|f(g(x)) - A|<\eps$. Altså,
+		$$
+			0<|x-a|<\delta\implies|f(g(x)) - A|<\eps.
+		$$
+    	Därmed följer det ur definitionen av gränsvärden att
+		$$
+			\lim_{x \to a}(f \circ g)(x)=A.
+		$$
+	\end{proof}
 \end{theorem}
 
 \subsubsection{Addition av gränsvärden}
@@ -202,9 +236,9 @@
 			\notag&=\qty|B-g(x)|+\qty|g(x)|\\
 			\notag&<\frac{\qty|B|}{2}+\qty|g(x)|\\
 			\notag\implies\frac{\qty|B|}{2}&<\qty|g(x)|\\
-			\label{eq:sats:div-g-v.:1}\implies\frac{1}{\qty|g(x)|}&<\frac{2}{\qty|L|}
+			\label{eq:sats:div-g-v.:1}\implies\frac{1}{\qty|g(x)|}&<\frac{2}{\qty|B|}
 		\end{align}
-		Nu så finns det även ett $\delta_2>0$ s.a.:
+		Nu, låt det även finnas ett $\delta_2>0$ s.a.:
 		\begin{equation}
 			\label{eq:sats:div-g-v.:2}0<\qty|x-a|<\delta_2\implies\qty|g(x)-B|<\frac{\qty|B|^2}{2}\eps
 		\end{equation}
@@ -216,7 +250,7 @@
 			&=\frac{1}{\qty|Bg(x)|}\qty|B-g(x)|\\
 			&=\frac{1}{\qty|B|}\frac{1}{\qty|g(x)|}\qty|B-g(x)|\\
 			&\stackrel{\eqref{eq:sats:div-g-v.:1}}{<}\frac{1}{\qty|B|}\frac{2}{\qty|B|}\qty|B-g(x)|\\
-			&\stackrel{\eqref{eq:sats:div-g-v.:2}}{<}\frac{2}{\qty|L|^2}\frac{\qty|L|^2}{2}\eps\\
+			&\stackrel{\eqref{eq:sats:div-g-v.:2}}{<}\frac{2}{\qty|B|^2}\frac{\qty|B|^2}{2}\eps\\
 			&=\eps
 		\end{align*}
 		Resten av satsen följer nu av Sats~\ref{sats:mult-g-v.}.
