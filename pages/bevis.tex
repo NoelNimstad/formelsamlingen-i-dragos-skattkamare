@@ -260,7 +260,137 @@
 
 \subsubsection{Baser}
 
-\begin{theorem}
+\begin{theorem}[Bassatsen]
+	Satsen lyder, i flera delar, att:
+	\begin{enumerate}
+		\item \begin{enumerate}[(a)]
+			\item Fler än $n$ vektorer i $\mathbb{R}^n$ är linjärt beroende.
+			\item Det krävs minst $n$ vektorer för att spänna upp $\mathbb{R}^n$
+			\item En bas för $\mathbb{R}^n$ har exakt $n$ vektorer.
+		\end{enumerate}
+		\item $\vec{v}_1,\dots,\vec{v}_n$ bas för $\mathbb{R}^n
+		\iff\vec{v}_1,\dots,\vec{v}_n$ är linjärt oberoende
+		$\iff\spn(\vec{v}_1,\dots,\vec{v}_n)=\mathbb{R}^n$.
+	\end{enumerate}
+
+	\begin{proof}
+		Antag
+		\begin{align*}
+			\vec{v}_1&=(v_{11},v_{12},\dots,\vec{v}_{1n})\in\mathbb{R}^n\\
+			\vdots\,\,&\\
+			\vec{v}_p&=(v_{p1},v_{p2},\dots,\vec{v}_{pn})\in\mathbb{R}^n\\
+			\vec{b}&=(b_1,b_2,\dots,b_n)\in\mathbb{R}^n
+		\end{align*}
+		Vi kan skriva om vektorekvationen
+		\begin{equation}\label{eq:sats:bas-sts:1}
+			x_1\vec{v}_1+\dots+x_n\vec{v}_n=\vec{b},
+		\end{equation}
+		där $x\in\mathbb{R}$ som de augmenterade matrisen:
+		\begin{equation}\label{eq:sats:bas-sts:2}
+			\overset{
+				\begin{matrix}
+					\color{gray}x_1
+					&\quad\,\,
+					&\color{gray}x_n
+					&\,\,\,\,
+				\end{matrix}
+			}{
+				\begin{amatrix}{3}
+					v_{11}&\dots&v_{p1}&b_1\\
+					\vdots&&\vdots&\vdots\\
+					v_{1n}&\dots&v_{pn}&b_n
+				\end{amatrix}%
+			}\sim\begin{amatrix}{5}
+				a&&&&&A\\
+				0&b&&\text{\tiny Konst}&&B\\
+				\vdots&0&\ddots&&&\vdots\\
+				\vdots&\vdots&0&\ddots&&\vdots\\
+				0&0&0&0&c&C\\
+			\end{amatrix}
+		\end{equation}
+		Låt $k$ vara antalet pivotelement. Då gäller det att $(k\leq p)\wedge(k\leq n)$.
+		\begin{enumerate}
+			\item \begin{enumerate}[(a)]
+				\item Om $p>n$ har LES:et \eqref{eq:sats:bas-sts:2} $p$ obekvanta
+				för $n$ ekvationer. Detta innebär att det finns minst en frivariabel.
+				Därmed finns ickétriviella lösningar, då $x_i\neq0\forall x_i$.
+				Altså är vektorerna $\vec{v}_1,\dots,\vec{v}_p$ linjärt beroende
+				om $p>n$.
+				\begin{der}
+					Detta betyder att för en bas gäller det att
+					\begin{equation}\label{eq:sats:bas-sts:3}
+						p\leq n.
+					\end{equation}
+				\end{der}
+				\item Om $p<n$, är $S=\spn(\vec{v}_1,\dots,\vec{v}_p)$ är ett delrum
+				till $\mathbb{R}^n$ s.a. $\dim(S)\leq p$. Eftersom $p<n$, $S\subsetneq\mathbb{R}^n$
+				då $\dim(\mathbb{R}^n)=n>p\geq\dim(S)$. Altså krävs $p\geq n$ för att
+				$\vec{v}_1,\dots,\vec{v}_p$ ska kunna spänna upp $\mathbb{R}^n$.
+				\begin{der}
+					Altså för en bas krävs det att
+					\begin{equation}\label{eq:sats:bas-sts:4}
+						p\geq n.
+					\end{equation}
+				\end{der}
+				\item En bas av vektorerna $\vec{v}_1,\dots,\vec{v}_n$ för $\mathbb{R}^n$ kräver att:
+				\begin{itemize}
+					\item $\spn(\vec{v}_1,\dots,\vec{v}_n)=\mathbb{R}^n$.
+					\item $\vec{v}_1,\dots,\vec{v}_n$ är linjärt oberoende.
+				\end{itemize}
+				Genom att applicera delsats 1. (a) och 1. (b) får vi då att:
+				$$
+					(p\leq n)\wedge(p\geq n)\iff p=n
+				$$
+				Altså måste en bas för $\mathbb{R}^n$ ha exakt $n$ vektorer.
+ 			\end{enumerate}
+			\item Antag att vektorerna $\vec{v}_1,\dots,\vec{v}_n$ är $n$ stycken
+			För att bevisa delsats 2. bryter vi upp den i 3 delar:
+			\begin{enumerate}[(i)]
+				\item Följden
+				$$
+					\vec{v}_1,\dots,\vec{v}_n\text{ bas för }\mathbb{R}^n\implies\vec{v}_1,\dots,\vec{v}_n\text{ linjärt oberoende}
+				$$
+				och
+				$$
+					\vec{v}_1,\dots,\vec{v}_n\text{ bas för }\mathbb{R}^n\implies\spn(\vec{v}_1,\dots,\vec{v}_n)=\mathbb{R}^n
+				$$
+				följer per definition av en bas.
+				\item För att visa följden
+				$$
+					\vec{v}_1,\dots,\vec{v}_n\text{ linjärt oberoende }\implies\vec{v}_1,\dots,\vec{v}_n,
+				$$ 
+				antag att $\vec{v}_1,\dots,\vec{v}_n$ är linjärt oberoende, och för
+				motsägelse att:
+				$$
+					S\leteq\spn(\vec{v}_1,\dots,\vec{v}_n)\neq\mathbb{R}^n.
+				$$
+				Då är $S\subsetneq\mathbb{R}^n$ s.a. $\dim(S)\leteq d<n$.
+
+				Mängden $\qty{\vec{v}_1,dots,\vec{v}_n}$ har $n$ stycken vektorer
+				i $S\cong\mathbb{R}^d$. Delsats 1. (a) ger att fler än $d$ vektorer
+				i $\mathbb{R}^d$ är linjärt beroende. Eftersom $n>d$, är
+				$\qty{\vec{v_1},\dots,\vec{v}_n}$ linjärt beroende $\contra$. Altså
+				är $\spn(\vec{v}_1,\dots,\vec{v}_n)=\mathbb{R}^n$, och $\vec{v}_1,\dots,\vec{v}_n$
+				ger en bas för $\mathbb{R}^n$.
+				\item För att visa följden
+				$$
+					\spn(\vec{v}_1,\dots,\vec{v}_n)=\mathbb{R}^n\implies\vec{v}_1,\dots,\vec{v}_n,
+				$$ 
+				antag att $\spn(\vec{v}_1,\dots,\vec{v}_n)=\mathbb{R}^n$, och för 
+				motsägelse att $\vec{v}_1,\dots,\vec{v}_n$ är linjärt beroende. Då
+				gäller det att $\exists\vec{v}_i$ som är en linjär kombination av dem
+				andra. Om $\vec{v}_i$ tas bort så spänner de återstående $n-1$ vektorerna
+				fortfarande upp $\mathbb{R}^n$. Delsats 1. (b) däremot ger dock att
+				$n$ vektorer krävs för att spänna upp $\mathbb{R}^n\contra$.
+
+				Altså är $\vec{v}_1,\dots,\vec{v}_n$ linjärt oberoende och därmed
+				ger en bas för $\mathbb{R}^n$.
+			\end{enumerate}
+		\end{enumerate}
+	\end{proof}
+\end{theorem}
+
+\begin{lemma}
 	$\vec{e}_1,\dots,\vec{e}_n$ är en bas för $\mathbb{R}^n\iff\forall\vec{v}\in\mathbb{R}^n
 	\exists!v_1,\dots,v_n\in\mathbb{R}^n$ s.a.:
 	$$
@@ -298,4 +428,4 @@
 			\vec{v}=v_1\vec{e}_1+\dots+v_n\vec{e}_n
 		$$
 	\end{proof}
-\end{theorem}
+\end{lemma}
